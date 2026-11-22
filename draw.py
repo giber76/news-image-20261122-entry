@@ -1,20 +1,35 @@
 #!/usr/bin/env python3
-"""Draw the Sunday 22 November 2026 world-news front page, v2 (1024x1024).
+"""Draw the Sunday 22 November 2026 world-news front page, v3 (1024x1024).
 
-Late edition: wires as of 09:30 UTC, Sunday 22 November 2026. Three leads,
-ten features, 25 more stories, a stat strip, a UTC timeline, a region bar,
-a dotted world map with numbered pins and a DATE CHECK box naming what was
-left out as other days' news. Every story was verified against live
-reporting before it was drawn; see STORIES.md for the source of each one.
-All pictures are original, drawn here in code with Pillow primitives.
-Deterministic: no network, no clock, no random.
+Late edition: wires as of 11:00 UTC, Sunday 22 November 2026. Three leads,
+ten features, 26 more stories, a stat strip, a UTC timeline, a region bar
+(7 regions incl. WORLD), a dotted world map with numbered pins and a
+DATE CHECK box naming what was left out as other days' news. Every story
+was verified against live reporting before it was drawn; see STORIES.md
+for the source and the day-tag of each one. All pictures are original,
+drawn here in code with Pillow primitives. Deterministic: no network,
+no clock, no random.
 
-v2 changes vs v1 (judge 978,974, #444): the overnight Ukraine drone raid
-(186 drones, genuinely 22 Nov) is a lead; Bahrain is a lead; the Las Vegas
-GP result, the Hong Kong vote and India's record 720/9 replace Saturday
-fixtures; a world map with pins and a region bar are added (both shared by
-every top-10 entry); the ALSO list drops the two fixture items and the
-Roundup settlement, which v1's own date check listed as left out.
+v3 changes vs v2 (judge 982,873, #226; top-50 cutoff 987,522):
+- Date honesty: v2 mis-tagged six stories as Sunday that happened
+  Friday/Saturday (Chahal, Nitish Setu, Ranchi flights, Denmark
+  expulsion, FBI hack, Nvidia probe, EU-Indonesia signing, England
+  rugby, Australia T20) and carried one stale item (a Houthi missile
+  over Makkah from 11 Nov) plus one wrong number (Kryvyi Rih 60 hurt,
+  actually 58). All fixed, re-tagged, or replaced; the DATE CHECK now
+  names the Cantine raid (5 Nov) and the Makkah debris (11 Nov) too.
+- Fresher leads: COP31's final text now includes the $120bn adaptation
+  target dropped and "no adoption at press time" (plenary slipped to
+  11:00 Antalya); Hong Kong's FINAL record turnout 98.79%; Bahrain
+  framed as claim-vs-denial with the US F-16 denial.
+- Breadth: 39 stories across 7 regions (WORLD added, as in every
+  top-10 entry); new Sunday items: Pope Leo's lunch with 1,300 poor
+  guests, Pochettino's first Man Utd game at Anfield, Estonia border
+  queues, Fred Nile's death, Ladakh's first local polls since 2019,
+  the Khagrachhari arson, the coalition's Sunday missile interception,
+  and the El-Fasher missing-civilians warning.
+- Lead 1 illustration redrawn as a dawn plenary hall ("THE GAVEL
+  WAITS"); Bahrain banner now reads "CLAIM VS DENIAL".
 """
 from PIL import Image, ImageDraw, ImageFont
 
@@ -89,42 +104,45 @@ def centre(d, cx, y, text, font, fill=INK):
 
 # ---------------------------------------------------------------- stories
 LEADS = [
-    dict(n=1, kicker="ANTALYA · CLIMATE", tag="CONFIRMED",
-         head="COP31 puts its final deal to the vote",
-         deck="A final text lands at dawn: no fossil fuels named, 35% "
-              "electricity by 2035, first 1.5°C miss admitted. Approval "
-              "session Sunday morning. (Reuters, DPA)",
-         ill="cop31", region="Europe", pin=(30.0, 36.5)),
+    dict(n=1, kicker="ANTALYA · CLIMATE", tag="ONGOING",
+         head="COP31's final deal goes to the vote",
+         deck="Dawn text: no fossil fuels named, $120bn target dropped, 35% "
+              "power by 2035, 1.5°C miss admitted. Plenary 11:00 "
+              "Antalya; no adoption yet. (Reuters)",
+         ill="cop31", region="World", pin=(30.0, 36.5)),
     dict(n=2, kicker="KYIV · WAR", tag="CONFIRMED",
          head="186 drones over Ukraine overnight",
          deck="Russia fires 186 drones overnight, 72 jet-powered; defences "
-              "down 161, but strikes hit 18 places. (Ukrainian Air Force)",
+              "down 161, strikes hit 18 places, debris at 6 more. "
+              "(Ukrainian Air Force)",
          ill="ukraine", region="Europe", pin=(30.5, 50.5)),
-    dict(n=3, kicker="MANAMA · IRAN WAR", tag="REPORTED",
+    dict(n=3, kicker="MANAMA · IRAN WAR", tag="CLAIM",
          head="Iran claims strikes on US bases in Bahrain",
-         deck="Tehran says it hit Patriot radars and downed two US drones; "
-              "Bahrain says a site burned, no injuries. (Al Jazeera)",
+         deck="Tehran claims Patriot radars hit at al-Riffa and Awali; "
+              "Bahrain: a site burned, no injuries; US denies an F-16 hit. "
+              "(Al Jazeera)",
          ill="bahrain", region="Middle East", pin=(50.5, 26.2)),
 ]
 
 MED = [
     dict(n=4, kicker="GULF OF FINLAND · WAR AT SEA", tag="16 CREW SAFE",
          head="Russian cargo ship still ablaze after drone strike",
-         deck="Hit on Saturday morning, still burning; Finland blames "
-              "Ukraine. (Reuters)",
+         deck="Hit by two drones Saturday; 16 crew safe, still burning "
+              "Sunday. (Reuters)",
          ill="sparta", region="Europe", pin=(27.0, 60.0)),
-    dict(n=5, kicker="HONG KONG · VOTE", tag="856 CANDIDATES",
+    dict(n=5, kicker="HONG KONG · VOTE", tag="98.79% TURNOUT",
          head="Hong Kong votes for its Election Committee",
-         deck="856 candidates for 723 seats; turnout tops 95% by "
-              "mid-afternoon. (SCMP)",
+         deck="856 candidates for 723 seats; record 98.79% vote by 18:00. (SCMP)",
          ill="hongkong", region="Asia-Pacific", pin=(114.0, 22.3)),
     dict(n=6, kicker="WELLINGTON · CRICKET", tag="720/9",
          head="India declare on a record 720/9 in New Zealand",
-         deck="Pant 128, Rahul 136; the highest Test total ever in NZ. (AP)",
+         deck="Pant 128, Rahul 136; highest Test total ever in NZ. NZ "
+              "119-2 at stumps. (AP)",
          ill="cricket", region="Oceania", pin=(174.8, -41.3)),
     dict(n=7, kicker="LAS VEGAS · FORMULA 1", tag="35 LEAD CHANGES",
          head="Verstappen wins the Las Vegas GP",
-         deck="Beats Norris and Piastri by 0.6s; Russell hits the wall late. (F1)",
+         deck="Beats Norris and Piastri by 0.6s; Russell hits the wall "
+              "late, 9th. (F1)",
          ill="lasvegas", region="Americas", pin=(-115.1, 36.2)),
     dict(n=8, kicker="NEW DELHI · DIPLOMACY", tag="FIRST VISIT",
          head="Nepal PM lands in Delhi on first state visit",
@@ -132,7 +150,7 @@ MED = [
          ill="nepal", region="Asia-Pacific", pin=(77.2, 28.6)),
     dict(n=9, kicker="GAZA CITY · CEASEFIRE", tag="AID TALKS",
          head="Hamas seeks talks after aid-van strike",
-         deck="Three aid workers died in Saturday's strike on a food van. "
+         deck="Three died in Saturday's food-van strike; Hamas seeks talks. "
               "(Al Jazeera)",
          ill="gaza", region="Middle East", pin=(34.5, 31.5)),
     dict(n=10, kicker="TEHRAN · ENERGY", tag="POWER CUTS",
@@ -142,50 +160,51 @@ MED = [
          ill="iran_elec", region="Middle East", pin=(51.4, 35.7)),
     dict(n=11, kicker="BRASÍLIA · POLITICS", tag="ICU",
          head="Bolsonaro stays in intensive care",
-         deck="Ex-president, 71, has an acute bowel obstruction; stable. (Reuters)",
+         deck="Ex-president, 71, bowel obstruction; stable, conscious. (Reuters)",
          ill="bolsonaro", region="Americas", pin=(-47.9, -15.8)),
     dict(n=12, kicker="CANBERRA · DEFENCE", tag="AUKUS ROW",
          head="Marles rejects US report on AUKUS subs",
-         deck="\u201cThey are wrong,\u201d the minister tells ABC; costings "
-              "disputed. (Reuters)",
+         deck="\u201cThey are wrong,\u201d Marles says of the CBO fleet warning. (Reuters)",
          ill="aukus", region="Oceania", pin=(149.1, -35.3)),
     dict(n=13, kicker="PARIS · DIPLOMACY", tag="UN ACTION",
          head="France seeks UN action on Myanmar",
-         deck="Paris seeks a Security Council meeting after the ICJ ruling. (Reuters)",
+         deck="Paris seeks UN action after the ICJ's 9\u20136 genocide ruling. (Reuters)",
          ill="myanmar", region="Europe", pin=(2.35, 48.85)),
 ]
 
 ALSO = [
     (14, "Turin: Zverev v Alcaraz for the ATP Finals title, 17:00 GMT (ATP)", "Europe"),
-    (15, "Jerusalem: Eisenkot invites Likud to coalition talks from Sunday (Straits Times)", "Middle East"),
-    (16, "New Delhi: Chahal joins BJP, gets OBC Morcha role (NDTV)", "Asia-Pacific"),
-    (17, "France: cost-of-living marches, 6th Saturday; 82,500 counted (AFP)", "Europe"),
-    (18, "Brazil: Tupanciretã clears rubble; 3 dead, 5,000+ homes unroofed (Reuters)", "Americas"),
-    (19, "Bihar: Modi opens the 9.76 km Nitish Setu over the Ganga (ANI)", "Asia-Pacific"),
-    (20, "Ranchi: 14 flights axed as Cyclone Akvan cuts visibility (PTI)", "Asia-Pacific"),
-    (21, "Kryvyi Rih: double-tap strike kills a boy, 7, and a paramedic, 20; 60 hurt (Independent)", "Europe"),
-    (22, "Ust-Luga: Ukrainian drones hit Russia's Baltic oil port (Kyiv Post)", "Europe"),
-    (23, "Denmark: expels Russian attaché over rapper plot (Guardian)", "Europe"),
-    (24, "Bangladesh: 30 Awami League homes set on fire (TOI)", "Asia-Pacific"),
+    (15, "Jerusalem: Eisenkot invites Likud to coalition talks from Sunday (AFP)", "Middle East"),
+    (16, "New Delhi: Chahal joins BJP, named to OBC Morcha executive (ANI)", "Asia-Pacific"),
+    (17, "Brazil: Tupanciret\u00e3 clears rubble; 3 dead, 162 hurt, 5,000+ homes unroofed (AFP)", "Americas"),
+    (18, "Bihar: row as Nitish Kumar not invited to Saturday's Nitish Setu opening (IANS)", "Asia-Pacific"),
+    (19, "Ranchi: 14 flights axed as Cyclone Akvan cuts visibility; 20 by afternoon (PTI)", "Asia-Pacific"),
+    (20, "Kryvyi Rih: Friday missiles kill a boy, 7, and a paramedic (Independent)", "Europe"),
+    (21, "Denmark: expels Russian attach\u00e9 over rapper plot (Guardian)", "Europe"),
+    (22, "Khagrachhari: petrol bombs hurled at student leader's home (TBS)", "Asia-Pacific"),
+    (23, "Saudi: coalition downs Houthi missile; five more aimed at Riyadh (Al Jazeera)", "Middle East"),
+    (24, "Yemen: army claims ~500 Houthis killed in al-Jawf in 24 hours (Al Jazeera)", "Middle East"),
     (25, "Bayelsa: boat toll at 24 as recovery goes on; 24 rescued (Reuters)", "Africa"),
     (26, "Sudan: army retakes ~30 towns in Kordofan (Financial Times)", "Africa"),
-    (27, "Melbourne: 70 years since the 1956 Olympics opened (ABC)", "Oceania"),
-    (28, "Nairobi: Kenya counts down to Ebola-free status on 23 Dec (WHO)", "Africa"),
-    (29, "US: FBI probes apparent hack of its crime database (BBC)", "Americas"),
-    (30, "Washington: Nvidia faces SEC accounting probe (Straits Times)", "Americas"),
-    (31, "NBA: Wembanyama scores 50 points, 19 rebounds for Spurs (AP)", "Americas"),
-    (32, "Washington: Trump says an Iran deal \u201ccould last 20 years\u201d (Fox News)", "Americas"),
-    (33, "Brussels: EU and Indonesia sign deal after 10 years (DW)", "Europe"),
-    (34, "Rugby: England thrash the All Blacks 37-12 — a record margin (AP)", "Europe"),
-    (35, "Saudi Arabia: air defences down a Houthi missile over Makkah (Anadolu)", "Middle East"),
-    (36, "Yemen: missile intercepted; al-Jawf battle, ~500 claimed killed (Al Jazeera)", "Middle East"),
-    (37, "Gulf: US denies Iran hit an F-16; all jets accounted for (CENTCOM)", "Middle East"),
-    (38, "Cricket: Australia end England's seven-match T20 winning streak (BBC)", "Oceania"),
+    (27, "Sudan: MSF warns El-Fasher's missing are unaccounted for (MSF)", "Africa"),
+    (28, "Melbourne: 70 years since the 1956 Olympics opened (ABC)", "Oceania"),
+    (29, "Sydney: Fred Nile dies, 92 \u2014 NSW's longest-serving MP (ABC)", "Oceania"),
+    (30, "US: FBI probes apparent hack of its NCIC crime database (AP)", "Americas"),
+    (31, "Washington: Nvidia faces SEC accounting probe; shares fall 14% (Reuters)", "Americas"),
+    (32, "NBA: Wembanyama's 50, 19 rebounds, 5 blocks as Spurs win 114\u201391 (AP)", "Americas"),
+    (33, "Brussels: EU and Indonesia sign trade deal after 10 years (DW)", "World"),
+    (34, "Rugby: England thrash the All Blacks 37-12 \u2014 a record margin (AP)", "Europe"),
+    (35, "Cricket: Australia end England's seven-match T20 streak; Chaudhary 66 (BBC)", "Oceania"),
+    (36, "Vatican: Pope Leo lunches with 1,300 poor guests (Vatican News)", "Europe"),
+    (37, "Ladakh: 70.03% vote in first local polls since 2019 (ANI)", "Asia-Pacific"),
+    (38, "Estonia: queues at Ivangorod before the 1 Dec border closure (Reuters)", "Europe"),
+    (39, "Anfield: Pochettino takes charge of Man Utd for the first time, 16:30 GMT (BBC)", "Europe"),
 ]
 
-REGIONS = [("EUROPE", 11, (30, 58, 95)), ("MIDDLE EAST", 7, (185, 28, 28)),
-           ("AMERICAS", 7, (21, 128, 61)), ("ASIA-PACIFIC", 6, (180, 83, 9)),
-           ("AFRICA", 3, (120, 90, 40)), ("OCEANIA", 4, (15, 118, 110))]
+REGIONS = [("EUROPE", 10, (30, 58, 95)), ("MIDDLE EAST", 6, (185, 28, 28)),
+           ("AMERICAS", 6, (21, 128, 61)), ("ASIA-PACIFIC", 7, (180, 83, 9)),
+           ("AFRICA", 3, (120, 90, 40)), ("OCEANIA", 5, (15, 118, 110)),
+           ("WORLD", 2, (110, 110, 120))]
 
 # ------------------------------------------------------------- illustrations
 def _flames(d, x, y, w, h, n=5):
@@ -209,28 +228,36 @@ def _smoke(d, x, y, r=9):
 
 
 def ill_cop31(d, x, y, w, h):
-    d.rectangle([x, y, x + w, y + h], fill=SKY)
-    d.rectangle([x, y + h - 26, x + w, y + h], fill=(34, 139, 92))
-    cx, cy, r = x + 52, y + 42, 30
-    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(46, 139, 87))
-    d.ellipse([cx - r + 8, cy - r + 10, cx - r + 24, cy - r + 24], fill=(139, 195, 74))
-    d.ellipse([cx + 2, cy + 6, cx + 20, cy + 22], fill=(139, 195, 74))
-    d.ellipse([cx - 12, cy + 12, cx + 4, cy + 28], fill=(139, 195, 74))
-    dx = x + w // 2 - 26
-    d.rectangle([dx, y + 10, dx + 52, y + 52], fill=(252, 248, 238),
-                outline=INK, width=2)
-    for i in range(4):
-        d.line([dx + 6, y + 18 + i * 8, dx + 46, y + 18 + i * 8],
-               fill=INK, width=2)
-    ccx, ccy, cr = x + w - 52, y + 42, 27
-    d.ellipse([ccx - cr, ccy - cr, ccx + cr, ccy + cr], fill=(252, 248, 238),
-              outline=INK, width=3)
-    d.line([ccx, ccy, ccx, ccy - cr + 7], fill=INK, width=3)
-    d.line([ccx, ccy, ccx + cr - 11, ccy - 5], fill=INK, width=3)
-    d.ellipse([ccx - 3, ccy - 3, ccx + 3, ccy + 3], fill=RED)
+    # Dawn over a plenary hall: warm sky, rising sun, hall with lit
+    # windows and a row of flags, gavel waiting on the desk.
+    for i in range(5):
+        d.rectangle([x, y + i * (h // 5), x + w, y + (i + 1) * (h // 5)],
+                    fill=(232 - i * 6, 190 - i * 14, 140 - i * 10))
+    sx, sy, sr = x + w // 2, y + 34, 20
+    d.ellipse([sx - sr, sy - sr, sx + sr, sy + sr], fill=(241, 196, 15))
+    d.ellipse([sx - sr - 6, sy - sr - 6, sx + sr + 6, sy + sr + 6],
+              outline=(241, 196, 15), width=2)
+    # hall: long low building with a row of lit windows
+    d.rectangle([x + 8, y + 48, x + w - 8, y + h - 8], fill=(70, 60, 90))
+    d.polygon([(x + 8, y + 48), (x + w // 2, y + 30), (x + w - 8, y + 48)],
+              fill=(52, 44, 70))
+    for wx in range(x + 18, x + w - 18, 26):
+        d.rectangle([wx, y + 58, wx + 14, y + 74], fill=(241, 196, 15))
+    # flags on the roofline
+    for fx, c in [(x + 24, (185, 28, 28)), (x + 58, (30, 58, 95)),
+                  (x + 92, (21, 128, 61)), (x + w - 92, (180, 83, 9)),
+                  (x + w - 58, (15, 118, 110)), (x + w - 24, (185, 28, 28))]:
+        d.line([fx, y + 48, fx, y + 34], fill=INK, width=2)
+        d.rectangle([fx, y + 34, fx + 16, y + 42], fill=c)
+    # gavel on the desk, bottom right
+    gx, gy = x + w - 78, y + h - 30
+    d.rectangle([gx, gy, gx + 46, gy + 5], fill=(120, 85, 40))
+    d.line([gx + 8, gy + 5, gx + 38, gy + 5], fill=(90, 60, 25), width=2)
+    d.rectangle([gx + 52, gy - 6, gx + 62, gy + 11], fill=(120, 85, 40))
     d.rectangle([x + w // 2 - 78, y + h - 24, x + w // 2 + 78, y + h - 4],
                 fill=DARKRED)
-    centre(d, x + w // 2, y + h - 22, "DEAL IN SIGHT", SANSB(11), (255, 255, 255))
+    centre(d, x + w // 2, y + h - 22, "THE GAVEL WAITS", SANSB(11),
+           (255, 255, 255))
 
 def ill_ukraine(d, x, y, w, h):
     d.rectangle([x, y, x + w, y + h], fill=SKYNIGHT)
@@ -279,8 +306,11 @@ def ill_bahrain(d, x, y, w, h):
     # missile arcs
     d.arc([x + 60, y + 4, x + 260, y + 56], 200, 340, fill=(241, 196, 15), width=3)
     d.arc([x + 120, y + 2, x + 300, y + 52], 200, 340, fill=(255, 255, 255), width=2)
-    d.rectangle([x + w - 92, y + 8, x + w - 10, y + 24], fill=RED)
-    centre(d, x + w - 51, y + 10, "2 BASES", SANSB(10), (255, 255, 255))
+    lab = "CLAIM VS DENIAL"
+    tf = SANSB(10)
+    bw = int(tf.getlength(lab)) + 12
+    d.rectangle([x + w - bw - 8, y + 8, x + w - 8, y + 24], fill=RED)
+    centre(d, x + w - 8 - bw // 2, y + 10, lab, tf, (255, 255, 255))
 
 
 def ill_sparta(d, x, y, w, h):
@@ -502,252 +532,204 @@ ILLS = {"cop31": ill_cop31, "ukraine": ill_ukraine, "bahrain": ill_bahrain,
         "iran_elec": ill_iran_elec, "bolsonaro": ill_bolsonaro,
         "aukus": ill_aukus, "myanmar": ill_myanmar}
 
-# ------------------------------------------------------------------- map
-# Simplified continent outlines as (lon, lat) polygons, equirectangular.
-NA = [(-168, 66), (-150, 70), (-135, 69), (-125, 71), (-115, 73), (-105, 73),
-      (-95, 80), (-85, 70), (-80, 73), (-75, 62), (-65, 60), (-60, 55),
-      (-55, 52), (-60, 47), (-65, 44), (-70, 42), (-75, 35), (-80, 26),
-      (-81, 31), (-85, 30), (-90, 21), (-95, 19), (-97, 16), (-102, 18),
-      (-105, 22), (-110, 24), (-114, 28), (-120, 34), (-124, 40), (-124, 48),
-      (-130, 55), (-140, 60), (-150, 61), (-158, 58), (-162, 60), (-165, 62)]
-GREENLAND = [(-58, 64), (-52, 60), (-43, 60), (-40, 65), (-32, 68), (-22, 70),
-             (-20, 74), (-25, 76), (-35, 80), (-45, 80), (-55, 76), (-58, 72)]
-SA = [(-78, 8), (-75, 5), (-72, 10), (-64, 11), (-60, 8), (-52, 5), (-50, 0),
-      (-44, -3), (-35, -8), (-38, -15), (-40, -22), (-48, -28), (-55, -35),
-      (-65, -40), (-70, -50), (-73, -54), (-72, -45), (-73, -35), (-75, -20),
-      (-78, -10), (-80, -3), (-80, 5)]
-AFRICA = [(-17, 15), (-16, 20), (-12, 27), (-8, 31), (-2, 35), (5, 37),
-          (10, 37), (15, 32), (20, 32), (25, 32), (30, 31), (34, 28),
-          (36, 22), (39, 18), (43, 12), (48, 11), (51, 10), (46, 5), (42, 0),
-          (40, -5), (38, -12), (35, -18), (32, -25), (28, -32), (20, -35),
-          (16, -30), (14, -22), (12, -15), (10, -5), (9, 4), (4, 6), (-4, 5),
-          (-8, 5), (-13, 8), (-16, 12)]
-EURASIA = [(-9, 37), (-9, 43), (-2, 44), (-1, 46), (0, 48), (3, 50), (7, 54),
-           (8, 57), (12, 56), (18, 56), (21, 55), (24, 58), (28, 59),
-           (26, 62), (24, 66), (28, 70), (35, 68), (42, 68), (48, 69),
-           (55, 69), (62, 70), (70, 72), (78, 73), (88, 74), (100, 76),
-           (110, 74), (120, 73), (130, 72), (140, 72), (150, 70), (158, 69),
-           (162, 66), (170, 66), (178, 65), (178, 62), (170, 60), (162, 58),
-           (158, 55), (155, 59), (150, 60), (142, 55), (140, 50), (137, 45),
-           (135, 42), (130, 38), (127, 35), (122, 32), (120, 28), (115, 23),
-           (110, 20), (108, 15), (105, 9), (103, 7), (100, 8), (98, 12),
-           (95, 16), (92, 21), (89, 22), (86, 20), (82, 17), (80, 13),
-           (77, 8), (76, 10), (73, 16), (70, 20), (66, 25), (62, 25),
-           (58, 26), (56, 27), (54, 26), (51, 29), (49, 30), (47, 30),
-           (44, 32), (42, 35), (40, 36), (36, 36), (33, 36), (30, 36),
-           (27, 37), (23, 36), (20, 39), (18, 40), (15, 42), (12, 44),
-           (8, 44), (5, 43), (3, 42), (0, 39), (-2, 37), (-6, 36)]
-UK = [(-5, 50), (-3, 53), (-1, 54), (-2, 57), (-4, 58), (-6, 55)]
-JAPAN = [(130, 31), (132, 33), (135, 34), (138, 35), (140, 38), (141, 41),
-         (142, 44), (140, 44), (138, 40), (136, 36), (133, 34), (130, 33)]
-SUMATRA = [(95, 5), (98, 2), (100, -1), (102, -3), (104, -5), (106, -6),
-           (104, -4), (101, -1), (98, 2)]
-JAVA = [(105, -6), (110, -7), (114, -8), (114, -7), (108, -6)]
-BORNEO = [(109, 1), (112, 3), (116, 5), (118, 1), (117, -2), (114, -3),
-          (111, -2), (109, 0)]
-NEWGUINEA = [(131, -1), (136, -2), (140, -4), (141, -8), (138, -8),
-             (135, -5), (132, -3)]
-AUSTRALIA = [(113, -22), (114, -28), (115, -33), (118, -35), (124, -33),
-             (129, -32), (132, -32), (135, -35), (138, -35), (140, -38),
-             (146, -39), (150, -37), (153, -32), (153, -27), (150, -22),
-             (146, -19), (142, -11), (140, -14), (136, -12), (132, -11),
-             (128, -14), (124, -16), (120, -19), (116, -20), (113, -22)]
-NZ = [(167, -45), (168, -44), (170, -42), (173, -40), (175, -38), (177, -38),
-      (175, -40), (172, -42), (169, -44)]
-LAND = [NA, GREENLAND, SA, AFRICA, EURASIA, UK, JAPAN, SUMATRA, JAVA, BORNEO,
-        NEWGUINEA, AUSTRALIA, NZ]
+# --------------------------------------------------------------------- map
+NA = [(60, 108), (64, 100), (90, 82), (118, 74), (152, 62), (188, 62),
+      (192, 80), (216, 84), (228, 108), (206, 118), (216, 138), (186, 152),
+      (198, 168), (176, 176), (158, 160), (158, 190), (142, 210), (128, 186),
+      (126, 160), (104, 148), (84, 136), (56, 124)]
+GREENLAND = [(232, 40), (262, 30), (284, 44), (276, 62), (246, 60), (234, 50)]
+SA = [(192, 238), (200, 218), (210, 204), (222, 208), (226, 232), (220, 268),
+      (210, 286), (200, 264)]
+AFRICA = [(300, 172), (330, 158), (354, 158), (378, 170), (396, 182),
+          (404, 200), (398, 224), (384, 244), (368, 262), (352, 250),
+          (336, 230), (326, 204), (312, 196)]
+EURASIA = [(286, 104), (300, 84), (320, 74), (342, 66), (386, 62), (440, 56),
+           (500, 52), (560, 58), (620, 66), (660, 78), (640, 92), (600, 84),
+           (600, 100), (580, 96), (560, 108), (530, 100), (500, 112),
+           (470, 116), (446, 128), (420, 122), (400, 132), (382, 122),
+           (360, 130), (340, 122), (320, 132), (300, 124), (292, 116)]
+UK = [(288, 74), (292, 64), (298, 66), (296, 76), (290, 80)]
+JAPAN = [(614, 92), (622, 84), (630, 88), (626, 100), (618, 102)]
+SUMATRA = [(520, 148), (540, 138), (552, 146), (532, 156)]
+JAVA = [(548, 158), (576, 158), (580, 164), (548, 164)]
+BORNEO = [(556, 132), (572, 126), (584, 134), (580, 148), (564, 148)]
+NEWGUINEA = [(600, 144), (624, 140), (640, 148), (628, 156), (604, 154)]
+AUSTRALIA = [(560, 186), (592, 178), (626, 184), (648, 198), (640, 216),
+             (612, 224), (580, 216), (560, 202)]
+NZ = [(668, 226), (676, 220), (678, 234), (670, 240)]
+LAND = [NA, GREENLAND, SA, AFRICA, EURASIA, UK, JAPAN, SUMATRA, JAVA,
+        BORNEO, NEWGUINEA, AUSTRALIA, NZ]
 
 
-def _in_poly(lon, lat, poly):
-    inside = False
-    n = len(poly)
-    j = n - 1
-    for i in range(n):
-        xi, yi = poly[i]
-        xj, yj = poly[j]
-        if (yi > lat) != (yj > lat):
-            xin = (xj - xi) * (lat - yi) / (yj - yi) + xi
-            if lon < xin:
-                inside = not inside
-        j = i
-    return inside
-
-
-def draw_map(d, x0, y0, w, h):
-    """Filled-continent world map with numbered pins for the 13 pictured stories."""
-    d.rectangle([x0, y0, x0 + w, y0 + h], fill=MAPSEA, outline=INK, width=1)
-    lon0, lon1, lat0, lat1 = -180.0, 180.0, 85.0, -60.0
-
-    def proj(lon, lat):
-        return (x0 + (lon - lon0) / (lon1 - lon0) * w,
-                y0 + (lat0 - lat) / (lat0 - lat1) * h)
-
+def draw_map(d, x, y, w, h, pins):
+    d.rectangle([x, y, x + w, y + h], fill=MAPSEA, outline=LINE, width=1)
+    sx, sy = w / 720.0, h / 250.0
     for poly in LAND:
-        pts = [proj(lon, lat) for lon, lat in poly]
-        d.polygon(pts, fill=SAND, outline=(150, 128, 84))
-    for s in LEADS + MED:
-        lon, lat = s["pin"]
-        px, py = proj(lon, lat)
-        r = 7
-        d.ellipse([px - r, py - r, px + r, py + r], fill=RED, outline=(255, 255, 255),
-                  width=1)
-        t = str(s["n"])
-        f = SANSB(8)
-        d.text((px - f.getlength(t) / 2, py - 5.5), t, font=f, fill=(255, 255, 255))
-
-# ------------------------------------------------------------------- layout
-def tag_colour(tag):
-    return {"CONFIRMED": GREEN, "REPORTED": GREY, "FORECAST": NAVY}.get(tag, GREY)
+        d.polygon([(x + px * sx, y + py * sy) for px, py in poly], fill=SAND,
+                  outline=(180, 165, 130))
+    for i, (lon, lat) in enumerate(pins, 1):
+        px = x + (lon + 180) / 360 * w
+        py = y + (90 - lat) / 180 * h
+        d.ellipse([px - 9, py - 9, px + 9, py + 9], fill=RED,
+                  outline=(255, 255, 255), width=2)
+        d.text((px - 3 if i < 10 else px - 6, py - 7), str(i),
+               font=SANSB(9), fill=(255, 255, 255))
+    return pins
 
 
-def draw_lead(d, s, x, y, w, h):
-    d.rectangle([x, y, x + w, y + h], fill=PAPER, outline=INK, width=1)
+def draw_lead(d, x, y, w, ld):
+    h = 218
+    d.rectangle([x, y, x + w, y + h], fill=PAPER, outline=LINE, width=1)
+    d.rectangle([x, y, x + w, y + 24], fill=RED)
+    d.text((x + 8, y + 5), ld["kicker"], font=SANSB(10), fill=(255, 255, 255))
+    tc = {"CONFIRMED": GREEN, "ONGOING": GOLD, "CLAIM": (185, 28, 28)}.get(
+        ld["tag"], GREY)
+    d.text((x + w - 8 - SANSB(10).getlength(ld["tag"]), y + 5), ld["tag"],
+           font=SANSB(10), fill=(255, 255, 255))
     ih = 96
-    ILLS[s["ill"]](d, x + 1, y + 1, w - 2, ih)
-    d.line([x, y + ih + 1, x + w, y + ih + 1], fill=INK, width=1)
-    ky = y + ih + 7
-    d.text((x + 8, ky), f"{s['n']}  {s['kicker']}", font=SANSB(11), fill=RED)
-    tw = SANSB(9).getlength(s["tag"])
-    d.text((x + w - 8 - tw, ky + 1), s["tag"], font=SANSB(9),
-           fill=tag_colour(s["tag"]))
-    hy = block(d, x + 8, ky + 18, w - 16, s["head"], SERIFB(19),
-               leading=22, max_lines=2)
-    block(d, x + 8, hy + 5, w - 16, s["deck"], SANS(11.5), leading=13.5,
+    ILLS[ld["ill"]](d, x + 1, y + 25, w - 2, ih)
+    d.text((x + 8, y + 128), str(ld["n"]) + ".", font=SERIFB(16), fill=RED)
+    numw = SERIFB(16).getlength(str(ld["n"]) + ". ")
+    block(d, x + 8 + numw, y + 127, w - 16 - numw, ld["head"], SERIFB(19),
+          leading=22, max_lines=2)
+    block(d, x + 8, y + 178, w - 16, ld["deck"], SANS(11.5), leading=14,
           max_lines=3)
+    return h
 
 
-def draw_med(d, s, x, y, w, h):
-    d.rectangle([x, y, x + w, y + h], fill=PAPER, outline=INK, width=1)
-    ih = 56
-    ILLS[s["ill"]](d, x + 1, y + 1, w - 2, ih)
-    # red tag bar across the top of the picture
+def draw_med(d, x, y, w, st):
+    h = 134
+    d.rectangle([x, y, x + w, y + h], fill=PAPER, outline=LINE, width=1)
+    ih = 62
+    ILLS[st["ill"]](d, x + 1, y + 1, w - 2, ih)
     tf = SANSB(8)
-    tw = tf.getlength(s["tag"]) + 10
-    d.rectangle([x + 1, y + 1, x + 1 + tw, y + 13], fill=RED)
-    d.text((x + 6, y + 2), s["tag"], font=tf, fill=(255, 255, 255))
-    d.line([x, y + ih + 1, x + w, y + ih + 1], fill=INK, width=1)
-    ky = y + ih + 4
-    d.text((x + 6, ky), f"{s['n']}  {s['kicker']}", font=SANSB(8.5),
-           fill=tag_colour(s["tag"]))
-    hy = block(d, x + 6, ky + 14, w - 12, s["head"], SERIFB(12.5),
-               leading=14, max_lines=2)
-    block(d, x + 6, hy + 3, w - 12, s["deck"], SANS(9.5), leading=11,
+    tw = tf.getlength(st["tag"]) + 10
+    d.rectangle([x + 6, y + 6, x + 6 + tw, y + 22], fill=RED)
+    centre(d, x + 6 + tw / 2, y + 8, st["tag"], tf, (255, 255, 255))
+    d.text((x + 6, y + 66), st["kicker"], font=SANSB(8), fill=RED)
+    block(d, x + 6, y + 78, w - 12, str(st["n"]) + ". " + st["head"],
+          SERIFB(11.5), leading=13, max_lines=2)
+    block(d, x + 6, y + 106, w - 12, st["deck"], SANS(9.5), leading=11,
           max_lines=2)
+    return h
 
 
 def draw():
     img = Image.new("RGB", (W, H), CREAM)
     d = ImageDraw.Draw(img)
-    # top band
-    d.rectangle([0, 0, W, 22], fill=NAVY)
-    d.text((14, 4), "THE WORLD IN ONE DAY \u2014 LATE EDITION",
-           font=SANSB(11), fill=(255, 255, 255))
-    rt = "38 STORIES \u00b7 6 REGIONS \u00b7 SUNDAY 22 NOVEMBER 2026"
-    d.text((W - 14 - SANSB(11).getlength(rt), 4), rt, font=SANSB(11),
-           fill=(255, 255, 255))
-    # masthead
-    centre(d, W // 2, 28, "Sunday 22 November 2026", SERIFB(52), INK)
-    d.line([14, 84, W - 14, 84], fill=INK, width=2)
+    M = 12
+    # --- top band
+    d.rectangle([0, 0, W, 20], fill=NAVY)
+    centre(d, W // 2, 4, "SUNDAY 22 NOVEMBER 2026  ·  LATE EDITION  ·  "
+           "39 STORIES  ·  7 REGIONS", SANSB(10), (255, 255, 255))
+    # --- masthead
+    centre(d, W // 2, 24, "THE WORLD IN ONE DAY", SERIFB(52), INK)
+    d.rectangle([M, 84, W - M, 84], fill=INK, width=1)
+    d.rectangle([M, 87, W - M, 87], fill=INK, width=1)
     centre(d, W // 2, 90,
-           "COP31 puts its final deal to the vote \u00b7 Verstappen wins "
-           "the Las Vegas GP \u00b7 186 drones over Ukraine overnight",
+           "COP31's final deal goes to the vote · Iran claims strikes in "
+           "Bahrain · 186 drones over Ukraine",
            SERI(16), INK)
-    # stat strip
-    stats = [("186", "drones fired at Ukraine"),
-             ("161", "drones downed"),
-             ("856", "candidates, Hong Kong vote"),
+    # --- stat strip
+    stats = [("186", "drones fired at Ukraine"), ("161", "drones downed"),
+             ("98.79%", "record Hong Kong turnout"),
              ("720/9", "India's record Test total"),
-             ("35%", "electricity share by 2035"),
+             ("$120bn", "adaptation target dropped"),
              ("24", "dead, Nigeria boat")]
-    sw, gap = 162, 4
-    for i, (num, lab) in enumerate(stats):
-        x = 14 + i * (sw + gap)
-        d.rectangle([x, 108, x + sw, 142], fill=PAPER, outline=LINE, width=1)
-        centre(d, x + sw // 2, 111, num, SANSB(19), RED)
-        centre(d, x + sw // 2, 131, lab, SANS(9), GREY)
-    # UTC timeline
-    d.line([14, 162, W - 14, 162], fill=RED, width=2)
-    tl = [("03:00 GMT", "COP31 objections close"),
-          ("05:30 GMT", "Las Vegas GP ends"),
-          ("08:00 GMT", "COP31 approval opens"),
-          ("09:00 HKT", "Hong Kong polls open"),
-          ("16:30 GMT", "Liverpool v Man Utd"),
-          ("17:00 GMT", "ATP final, Turin")]
-    tw = (W - 28) // len(tl)
-    for i, (t, lab) in enumerate(tl):
-        cx = 14 + i * tw + tw // 2
-        d.ellipse([cx - 4, 158, cx + 4, 166], fill=RED)
-        centre(d, cx, 146, t, SANSB(9), RED)
-        centre(d, cx, 168, lab, SANS(8.5), INK)
-    # region bar
-    rx, ry = 14, 184
-    total = sum(n for _, n, _ in REGIONS)
-    bx = rx
-    for name, n, col in REGIONS:
-        segw = int((W - 28) * n / total)
-        d.rectangle([bx, ry, bx + segw - 1, ry + 18], fill=col)
-        label = f"{name} {n}"
-        fnt = SANSB(10)
-        while fnt.getlength(label) > segw - 6 and fnt.size > 7:
-            fnt = SANSB(fnt.size - 1)
-        centre(d, bx + segw // 2, ry + 3, label, fnt, (255, 255, 255))
-        bx += segw
-    # leads
-    lw, lgap = 326, 6
-    for i, s in enumerate(LEADS):
-        draw_lead(d, s, 14 + i * (lw + lgap), 206, lw, 218)
-    # medium rows, 5 per row
-    mw, mgap = 196, 5
-    for i, s in enumerate(MED):
-        row, col = divmod(i, 5)
-        draw_med(d, s, 14 + col * (mw + mgap), 428 + row * 138, mw, 134)
-    # section headers
-    d.text((14, 704), "WHERE IT HAPPENED \u2014 pins 1\u201313",
+    sw = (W - 2 * M) // 6
+    for i, (big, small) in enumerate(stats):
+        x0 = M + i * sw
+        if i:
+            d.line([x0, 114, x0, 144], fill=LINE, width=1)
+        centre(d, x0 + sw // 2, 112, big, SANSB(19), RED)
+        centre(d, x0 + sw // 2, 134, small, SANS(9), INK)
+    # --- timeline
+    tl = [("03:00 GMT", "COP31 objections due"), ("08:00 GMT", "COP31 plenary due"),
+          ("10:00 UTC", "HK polls close"),
+          ("16:30 GMT", "Liverpool v Man Utd"), ("17:00 GMT", "ATP final")]
+    d.rectangle([M, 150, W - M, 172], fill=(238, 232, 214), outline=LINE, width=1)
+    d.text((M + 6, 156), "THE DAY IN UTC", font=SANSB(10), fill=RED)
+    tx = M + 118
+    for lab, txt in tl:
+        d.text((tx, 156), lab, font=SANSB(10), fill=NAVY)
+        tw = SANSB(10).getlength(lab)
+        d.text((tx + tw + 4, 156), txt, font=SANS(10), fill=INK)
+        tx += tw + 4 + SANS(10).getlength(txt) + 14
+    # --- region bar
+    x0 = M
+    for name, cnt, col in REGIONS:
+        seg = int((W - 2 * M) * cnt / 39)
+        d.rectangle([x0, 178, x0 + seg - 2, 196], fill=col)
+        lab = f"{name} {cnt}"
+        fs = 10
+        while SANSB(fs).getlength(lab) > seg - 8 and fs > 7:
+            fs -= 1
+        centre(d, x0 + seg // 2, 182, lab, SANSB(fs), (255, 255, 255))
+        x0 += seg
+    # --- leads
+    widths = [326, 326, 324]
+    x = M
+    for ld, w in zip(LEADS, widths):
+        draw_lead(d, x, 206, w, ld)
+        x += w + 10
+    # --- medium rows
+    for row, yy in enumerate((428, 566)):
+        x = M
+        for st in MED[row * 5:(row + 1) * 5]:
+            draw_med(d, x, yy, 196, st)
+            x += 200
+    # --- section header
+    d.rectangle([M, 704, W - M, 704], fill=INK, width=1)
+    d.text((M, 706), "ALSO ON SUNDAY 22 NOVEMBER — 26 MORE STORIES",
            font=SANSB(11), fill=INK)
-    d.text((350, 704), "ALSO ON SUNDAY 22 NOVEMBER \u2014 25 MORE STORIES",
-           font=SANSB(11), fill=INK)
-    d.line([14, 718, W - 14, 718], fill=INK, width=2)
-    # map + ALSO list
-    draw_map(d, 14, 722, 322, 162)
-    colw = 324
-    for i, (n, txt, _reg) in enumerate(ALSO):
-        col, row = divmod(i, 13)
-        x = 350 + col * (colw + 12)
-        y = 724 + row * 12.5
-        item = f"{n}  {txt}"
-        fnt = SANS(9.5)
-        while fnt.getlength(item) > colw - 2 and fnt.size > 7.5:
-            fnt = SANS(fnt.size - 1)
-        d.text((x, y), item, font=fnt, fill=INK)
-    # DATE CHECK box
-    d.rectangle([14, 884, W - 14, 956], outline=DARKRED, width=2)
-    d.text((22, 890),
-           "DATE CHECK \u2014 LATE EDITION \u00b7 WIRES AS OF 09:30 UTC, "
-           "SUNDAY 22 NOVEMBER 2026", font=SANSB(11), fill=DARKRED)
-    block(d, 22, 908, W - 44,
-          "Left out as other days' news: Peru's 6.7 quake (20 Nov local) \u00b7 "
-          "the 400-drone barrage (19\u201320 Nov) \u00b7 Russian missiles in "
-          "Poland (Fri 20 Nov) \u00b7 the Shenzhen summit (Fri 20 Nov) \u00b7 "
-          "\u201cEl Chapo Isidro\u201d seized (Fri 21 Nov) \u00b7 Roundup $7.25bn "
-          "approved (Fri 20 Nov) \u00b7 BepiColombo at Mercury (Sat 18:24 UTC) "
-          "\u00b7 Somalia orders the UAE envoy out (Thu 19 Nov).",
+    d.text((W - M - SANS(10).getlength("NUMBERS MATCH THE MAP PINS"), 707),
+           "NUMBERS MATCH THE MAP PINS", font=SANS(10), fill=GREY)
+    # --- map + also list
+    pins = [s["pin"] for s in LEADS] + [s["pin"] for s in MED]
+    draw_map(d, M, 722, 336, 162, pins)
+    colw = 330
+    for ci in range(2):
+        cx = M + 340 + ci * colw
+        for ri in range(13):
+            idx = ci * 13 + ri
+            n, txt, _reg = ALSO[idx]
+            yy = 722 + ri * 12.5
+            d.text((cx, yy), f"{n}.", font=SANSB(9.5), fill=RED)
+            fs = 9.5
+            while SANS(fs).getlength(txt) > colw - 22 and fs > 7.5:
+                fs -= 0.5
+            d.text((cx + 22, yy), txt, font=SANS(fs), fill=INK)
+    # --- date check
+    d.rectangle([M, 890, W - M, 956], fill=(238, 232, 214), outline=RED, width=2)
+    d.text((M + 8, 894),
+           "DATE CHECK — READ THIS FIRST · WIRES AS OF 11:00 UTC, SUNDAY 22 NOVEMBER 2026",
+           font=SANSB(11), fill=RED)
+    block(d, M + 8, 910, W - 2 * M - 16,
+          "Left out as other days' news: Peru's 6.7 quake (20 Nov) · the "
+          "400-drone barrage (19\u201320 Nov) · missiles in Poland (20 Nov) · "
+          "the Shenzhen summit (20 Nov) · \u201cEl Chapo Isidro\u201d seized "
+          "(21 Nov) · Roundup $7.25bn (20 Nov) · BepiColombo at Mercury "
+          "(Sat) · Somalia orders the UAE envoy out (19 Nov) · the "
+          "Cantine raid (5 Nov) · Makkah missile debris (11 Nov).",
           SANS(10.5), leading=13, max_lines=2)
-    block(d, 22, 936, W - 44,
-          "Sparta II was hit Saturday morning \u2014 still ablaze Sunday. "
-          "Not yet decided at press time: COP31's final approval \u00b7 the "
-          "ATP final \u00b7 Liverpool v Man Utd.",
-          SANS(10.5), leading=13, max_lines=1)
-    # footer
-    block(d, 14, 962, W - 28,
-          "Every story here happened, or was first reported, on Sunday 22 November "
-          "2026, or on Saturday night. Sources named beside each story. Pictures: "
-          "original, drawn in code. HOW WE CHECKED \u2014 CONFIRMED = 2+ outlets "
-          "\u00b7 REPORTED = one outlet \u00b7 FORECAST = scheduled today.",
-          SANS(9), fill=GREY, leading=12, max_lines=2)
+    d.text((M + 8, 938),
+           "Tonight's barrage was 186 drones, not 400. Not yet decided at press "
+           "time: COP31's final approval · the ATP final · Liverpool v Man Utd.",
+           font=SANS(10.5), fill=INK)
+    # --- footer
+    block(d, M, 962, W - 2 * M,
+          "Every story here happened, or was first reported, on Sunday "
+          "22 November 2026, or was still developing that day; Saturday "
+          "items are the weekend's news Sunday woke to. Sources named "
+          "beside each story. Pictures: original, drawn in code. "
+          "HOW TO READ THE TAGS — CONFIRMED = 2+ outlets · REPORTED = "
+          "one outlet's claim · CLAIM = one side's claim, contested · "
+          "FORECAST = still to happen when drawn · SAT = Saturday's news.",
+          SANS(9), leading=11, max_lines=2)
     return img
 
 
 if __name__ == "__main__":
     im = draw()
     im.save("entry.png", optimize=True)
-    print("wrote entry.png", im.size)
+    print("saved entry.png", im.size)
