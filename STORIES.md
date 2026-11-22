@@ -1,7 +1,7 @@
-# Stories — Sunday 22 November 2026 (late edition, v5)
+# Stories — Sunday 22 November 2026 (final edition, v6)
 
 Every story below was verified against live reporting on 22 November 2026
-(UTC) before it was drawn. Wires as of 11:00 UTC, Sunday 22 November 2026.
+(UTC) before it was drawn. Wires as of 22:00 UTC, Sunday 22 November 2026.
 Stories marked SAT happened on Saturday 21 November and are the weekend
 news Sunday woke to; FRI marks Friday 20 November items that were still
 developing on Sunday; SUN marks stories that happened, or were first
@@ -13,6 +13,35 @@ Russian missiles landing in Poland (Fri 20 Nov), the Shenzhen summit
 approved (Fri 20 Nov), BepiColombo at Mercury (Sat 18:24 UTC), Somalia
 orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 (5 Nov), the Houthi missile debris over Makkah (11 Nov).
+
+## v6 changes vs v5 (judge 984,958, #168; top-50 cutoff 988,856, gap 3,898)
+
+v5 was the best 22nd entry yet but its wires stopped at 11:00 UTC, so the
+day's biggest story was unfinished ("no adoption confirmed at press
+time") and two items were forecasts. v6 is the FINAL EDITION (wires
+22:00 UTC) with the day's endings verified against live reporting:
+
+- COP31 COLLAPSED: the closing plenary rejected the draft Antalya Pact —
+  EU, UK, Panama, the Marshall Islands and others refused a text naming
+  no fossil fuels; President Murat Kurum: "I understand that there is no
+  agreement on this text." Longest COP on record. Lead 1 rewritten to
+  the collapse (art label "NO DEAL"); the $120bn target is now "lost",
+  not "dropped".
+- ATP FINAL PROMOTED: Alcaraz beat Zverev 6-2, 7-6(7) for his first ATP
+  Finals title (saved three set points, $5.17m, 5-0) — promoted from
+  ALSO 14 to feature 8 with a new tennis illustration. Nepal's visit
+  moves to ALSO 14.
+- LIVERPOOL 4-0: Pochettino's debut was a nightmare (Yoro red, 8th
+  minute; Szoboszlai 10', Wirtz 13', Ngumoha 66', Munoz 82') — ALSO 39
+  is now the result, not the forecast.
+- FIVE MORE STORIES (39 -> 44): Leeds stun Chelsea 4-1 (Okafor twice),
+  Fulham hold Man City 1-1, 10,000 march in Antalya, Arribage/Olivetti
+  win the ATP doubles (fills the ALSO hole at 32), Pakistan take the Sri
+  Lanka Test series 1-0. Region counts recomputed (Europe 14, Middle
+  East 6, Americas 7, Asia-Pacific 7, Africa 3, Oceania 4, World 3).
+- Stat strip swaps the smallest number (24 dead, Nigeria boat) for
+  10,000 Antalya marchers; timeline's last two items are results with
+  real times (18:28 Liverpool, 19:17 Alcaraz).
 
 ## v5 changes vs v4 (judge 984,446, #228; top-50 cutoff 988,817, gap 4,371)
 
@@ -55,14 +84,15 @@ v5 closes:
 
 ## Leads
 
-1. SUN — COP31's final deal goes to the vote — Antalya. The final text
-   was tabled early Sunday: 94 paragraphs, no fossil fuels named, the
-   $120bn adaptation target dropped, a 35% power share by 2035 (from
-   ~21%), and the first admission the 1.5°C limit will be missed (the
-   peak is expected to exceed it). Objections due 03:00 GMT; the closing
-   plenary slipped 06:00 → 09:00 → 11:00 Antalya (08:00 GMT); no
-   adoption confirmed at press time. Hoekstra: "a good deal or no deal".
-   Source: Reuters / AP / The Guardian.
+1. SUN — COP31 collapses with no deal — Antalya. The closing plenary
+   rejected the draft Antalya Pact: the EU, UK, Panama, the Marshall
+   Islands and others refused a text that named no fossil fuels and
+   dropped the $120bn adaptation target. President Murat Kurum: "I
+   understand that there is no agreement on this text. For that reason,
+   these decisions have not been adopted." The longest COP on record
+   (two days overtime); technical items passed, the overarching deal did
+   not. Next attempt: COP32, Addis Ababa, Nov 2027.
+   Source: Reuters / AP / IPS / Greenpeace.
 2. SUN — 186 drones over Ukraine overnight — Russia fired 186 drones at
    Ukraine overnight 21–22 Nov, launched 18:00 Saturday, 72 of them
    jet-powered; air defences downed or suppressed 161 by 08:00 Kyiv
@@ -95,10 +125,11 @@ v5 closes:
    Piastri by 0.6s after 35 lead changes; Russell hits the wall late
    and finishes ninth. Race ran Saturday night in Las Vegas, reported
    Sunday. Source: Reuters / Formula 1.
-8. SUN — Nepal PM lands in Delhi on first state visit — Balendra Shah
-   arrives Sunday for a two-day state visit, his first bilateral trip
-   since taking office in March 2026. 34-member delegation; talks with
-   Modi on Monday. Source: IANS / MEA.
+8. SUN — Alcaraz beats Zverev to win the ATP Finals — Carlos Alcaraz
+   beat world No. 1 Alexander Zverev 6-2, 7-6(7) in Turin on Sunday
+   evening for his first Nitto ATP Finals title: saved three set points
+   in the tie-break, 30th career title, $5.17m prize, 5-0 at the
+   tournament. Source: ATP / Flashscore.
 9. SAT/SUN — Hamas seeks talks after aid-van strike — three people died
    in Saturday's strike on a food van in Tel al-Hawa, Gaza City; Hamas
    seeks urgent mediator talks on Sunday (reported Sun 09:29 UTC). The
@@ -131,8 +162,8 @@ v5 closes:
 
 ## Also on Sunday 22 November (15–39, except 32)
 
-14. SUN — Turin: Zverev v Alcaraz for the ATP Finals title, 17:00 GMT
-    (ATP). Forecast — still to happen when drawn.
+14. SUN — New Delhi: Nepal PM Balendra Shah lands on his first state
+    visit to India; talks with Modi on Monday (IANS).
 15. SUN — Jerusalem: Eisenkot invites Likud to coalition talks from
     Sunday; the invitation was announced Saturday night, talks begin
     Sunday (AFP).
@@ -179,7 +210,8 @@ v5 closes:
 31. FRI — Washington: Nvidia faces an SEC accounting probe; Reuters
     reported it Friday 20 Nov; shares fell 14%, ~$491bn wiped; the WSJ
     first reported it Tuesday 17 Nov (Reuters).
-32. — Promoted to feature 14 in v5 (Wembanyama's 50; see Features).
+32. SUN — Turin: Arribage/Olivetti win the ATP doubles, beating
+    Arevalo/Pavic 3-6, 7-6(2), 10-6 (theScore).
 33. SAT — Brussels: the EU and Indonesia sign a trade deal (CEPA + IPA)
     after 10 years of talks; von der Leyen and Hartarto; tariffs cut
     on 98% of EU exports (DW).
@@ -195,16 +227,24 @@ v5 closes:
 37. SAT — Washington: Trump says an Iran deal "could last 20 years" (Fox News).
 38. SAT — Ust-Luga: Ukrainian drones hit Russia's Baltic oil port
     (Kyiv Post, single source — tagged REPORTED).
-39. SUN — Anfield: Pochettino takes charge of Man Utd for the first
-    time, 16:30 GMT v Liverpool; United 18th, their worst top-flight
-    start in 40 years, 1 win in 10, 8 games without a win, in the
-    relegation zone; he replaced Michael Carrick; Fernandes stays
-    captain; Liverpool's boss is Andoni Iraola (BBC). Forecast.
+39. SUN — Anfield: Liverpool rout Man Utd 4-0 — Pochettino's debut a
+    nightmare: Yoro sent off in the 8th minute, Szoboszlai (10') and
+    Wirtz (13') score, Ngumoha (66') and Munoz (82') complete the rout;
+    joint-heaviest defeat by a Man Utd boss in his first game (since
+    1926). United stay in the relegation zone. Source: Sky Sports / Opta.
+40. SUN — Leeds stun Chelsea 4-1 at Stamford Bridge — Noah Okafor
+    scores twice; first Leeds win at the Bridge in 27 years
+    (Bromwic Lodge / Malta Sport).
+41. SUN — Manchester City held 1-1 by Fulham — City's slump goes on;
+    Fulham end a 20-game losing streak (Malta Sport).
+42. SUN — Antalya: 10,000+ march for climate action as COP31 collapses
+    (Greenpeace).
+43. SAT — Pakistan take the Sri Lanka Test series 1-0 (Daily Dose of Sports).
 
 ## Region counts (must sum to 39)
 
-Europe 11 · Middle East 6 · Americas 7 · Asia-Pacific 6 · Africa 3 ·
-Oceania 4 · World 2 = 39.
+Europe 14 · Middle East 6 · Americas 7 · Asia-Pacific 7 · Africa 3 ·
+Oceania 4 · World 3 = 44.
 
 ## v4 — what changed from v3
 

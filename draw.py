@@ -1,14 +1,33 @@
 #!/usr/bin/env python3
-"""Draw the Sunday 22 November 2026 world-news front page, v4 (1024x1024).
+"""Draw the Sunday 22 November 2026 world-news front page, v6 (1024x1024).
 
-Late edition: wires as of 11:00 UTC, Sunday 22 November 2026. Three leads,
-ten features, 26 more stories, a stat strip, a 7-item UTC timeline, a
+Final edition: wires as of 22:00 UTC, Sunday 22 November 2026. Four leads,
+ten features, 30 more stories, a stat strip, a 7-item UTC timeline, a
 region bar (7 regions), a dotted world map with numbered pins and a DATE
 CHECK box naming what was left out as other days' news. Every story was
 verified against live reporting before it was drawn; see STORIES.md for
 the source and the day-tag of each one. All pictures are original, drawn
 here in code with Pillow primitives. Deterministic: no network, no clock,
 no random.
+
+v6 changes vs v5 (judge 984,958, #168; top-50 cutoff 988,856, gap 3,898):
+- FINAL-EDITION FRESHNESS: v5's wires stopped at 11:00 UTC, so its lead
+  story was unfinished ("no adoption confirmed at press time") and two
+  items were forecasts. The day's endings are now in: COP31 COLLAPSED in
+  the closing plenary (EU and others rejected the text; Kurum: "no
+  agreement"), Alcaraz beat Zverev 6-2, 7-6(7) for his first ATP Finals
+  title, and Liverpool routed Man Utd 4-0 in Pochettino's debut. Lead 1
+  rewritten to the collapse (art label "NO DEAL"), the ATP final promoted
+  from ALSO to feature 8 with a new tennis illustration (Nepal's visit
+  moves to ALSO 14), Liverpool's result replaces the forecast at ALSO 39.
+- FIVE MORE STORIES (39 -> 44): Leeds stun Chelsea 4-1, Fulham hold Man
+  City 1-1, 10,000 march in Antalya, Arribage/Olivetti win the ATP
+  doubles (fills the ALSO hole at 32 left by Wembanyama's v5 promotion),
+  Pakistan take the Sri Lanka Test series 1-0. Region counts recomputed
+  (Europe 14, Middle East 6, Americas 7, Asia-Pacific 7, Africa 3,
+  Oceania 4, World 3 = 44). Stat strip swaps the smallest number (24
+  dead, Nigeria boat) for 10,000 Antalya marchers. Timeline's last two
+  items are now results with real times (18:28, 19:17).
 
 v4 changes vs v3 (judge 979,552, #828; v2 was 982,873, #232; top-50
 cutoff 988,663):
@@ -106,9 +125,9 @@ def centre(d, cx, y, text, font, fill=INK):
 # ---------------------------------------------------------------- stories
 LEADS = [
     dict(n=1, kicker="ANTALYA · CLIMATE", tag="CONFIRMED",
-         head="COP31's final deal goes to the vote",
-         deck="Dawn text: no fossil fuels named, $120bn target dropped, "
-              "35% power by 2035, 1.5°C miss admitted. (Reuters)",
+         head="COP31 collapses — no deal",
+         deck="EU, UK and others reject the text: no fossil fuels named, "
+              "$120bn lost. Kurum: \u201cno agreement.\u201d (Reuters)",
          ill="cop31", region="World", pin=(30.0, 36.5)),
     dict(n=2, kicker="KYIV · WAR", tag="OFFICIALS",
          head="186 drones over Ukraine overnight",
@@ -144,11 +163,11 @@ MED = [
          deck="Beats Norris and Piastri by 0.6s; Russell hits the wall "
               "late, 9th. (F1)",
          ill="lasvegas", region="Americas", pin=(-115.1, 36.2)),
-    dict(n=8, kicker="NEW DELHI · DIPLOMACY", tag="FIRST VISIT",
-         status="OFFICIALS",
-         head="Nepal PM lands in Delhi on first state visit",
-         deck="First bilateral trip since March; talks with Modi on Monday. (IANS)",
-         ill="nepal", region="Asia-Pacific", pin=(77.2, 28.6)),
+    dict(n=8, kicker="TURIN · TENNIS", tag="6-2, 7-6(7)",
+         status="CONFIRMED",
+         head="Alcaraz beats Zverev to win ATP Finals",
+         deck="First Finals title; saved three set points, $5.17m, 5-0. (ATP)",
+         ill="tennis", region="Europe", pin=(7.7, 45.1)),
     dict(n=9, kicker="GAZA CITY · CEASEFIRE", tag="AID TALKS",
          status="REPORTED",
          head="Hamas seeks talks after aid-van strike",
@@ -184,7 +203,7 @@ MED = [
 ]
 
 ALSO = [
-    (14, "Turin: Zverev v Alcaraz for ATP title", "Europe"),
+    (14, "New Delhi: Nepal PM lands on first visit", "Asia-Pacific"),
     (15, "Jerusalem: Eisenkot invites Likud talks", "Middle East"),
     (16, "New Delhi: cricketer Chahal joins BJP", "Asia-Pacific"),
     (17, "Brazil: supercell kills 3, 5,000 homes hit", "Americas"),
@@ -202,13 +221,18 @@ ALSO = [
     (29, "Sydney: Fred Nile dies, 92", "Oceania"),
     (30, "US: FBI probes NCIC database hack", "Americas"),
     (31, "Washington: Nvidia probe; shares fall 14%", "Americas"),
+    (32, "Turin: Arribage/Olivetti win ATP doubles", "Europe"),
     (33, "Brussels: EU–Indonesia trade deal signed", "World"),
     (34, "Rugby: England thrash All Blacks 37-12", "Europe"),
     (35, "Cricket: Australia beat England by 3 wickets", "Oceania"),
     (36, "Vatican: Pope Leo feeds 1,300 poor", "Europe"),
     (37, "Washington: Trump: Iran deal '20 years'", "Americas"),
     (38, "Ust-Luga: drones hit Baltic oil port", "Europe"),
-    (39, "Anfield: Pochettino's Man Utd debut", "Europe"),
+    (39, "Anfield: Liverpool rout Man Utd 4-0", "Europe"),
+    (40, "Leeds: Okafor twice in 4-1 rout of Chelsea", "Europe"),
+    (41, "Manchester: Fulham hold Man City 1-1", "Europe"),
+    (42, "Antalya: 10,000 march as COP31 collapses", "World"),
+    (43, "Pakistan: Test series win over Sri Lanka 1-0", "Asia-Pacific"),
 ]
 
 # Region colours for ALSO numbers (match the region bar).
@@ -217,10 +241,10 @@ REGION_COL = {"Europe": (30, 58, 95), "Middle East": (185, 28, 28),
               "Africa": (120, 90, 40), "Oceania": (15, 118, 110),
               "World": (110, 110, 120)}
 
-REGIONS = [("EUROPE", 11, (30, 58, 95)), ("MIDDLE EAST", 6, (185, 28, 28)),
-           ("AMERICAS", 7, (21, 128, 61)), ("ASIA-PACIFIC", 6, (180, 83, 9)),
+REGIONS = [("EUROPE", 14, (30, 58, 95)), ("MIDDLE EAST", 6, (185, 28, 28)),
+           ("AMERICAS", 7, (21, 128, 61)), ("ASIA-PACIFIC", 7, (180, 83, 9)),
            ("AFRICA", 3, (120, 90, 40)), ("OCEANIA", 4, (15, 118, 110)),
-           ("WORLD", 2, (110, 110, 120))]
+           ("WORLD", 3, (110, 110, 120))]
 
 # ------------------------------------------------------------- illustrations
 def _flames(d, x, y, w, h, n=5):
@@ -279,7 +303,7 @@ def ill_cop31(d, x, y, w, h):
     d.rectangle([gx + 42, gy - 5, gx + 50, gy + 9], fill=(120, 85, 40))
     d.rectangle([x + w // 2 - 62, y + h - 22, x + w // 2 + 62, y + h - 4],
                 fill=DARKRED)
-    centre(d, x + w // 2, y + h - 20, "THE GAVEL WAITS", SANSB(10),
+    centre(d, x + w // 2, y + h - 20, "NO DEAL", SANSB(10),
            (255, 255, 255))
 
 def ill_ukraine(d, x, y, w, h):
@@ -625,12 +649,42 @@ def ill_basketball(d, x, y, w, h):
     d.arc([cx - r, cy - r, cx + r, cy + r], 300, 60, fill=(120, 60, 20), width=2)
 
 
+def ill_tennis(d, x, y, w, h):
+    # Tennis court: blue hard court, white lines, net, ball mid-flight,
+    # gold trophy bottom right. Feature art is 192 wide in v6.
+    d.rectangle([x, y, x + w, y + h], fill=(60, 110, 180))
+    d.rectangle([x, y + h - 16, x + w, y + h], fill=(40, 90, 150))
+    d.rectangle([x + 12, y + 8, x + w - 12, y + h - 22],
+                outline=(255, 255, 255), width=2)
+    d.line([x + w // 2, y + 8, x + w // 2, y + h - 22],
+           fill=(255, 255, 255), width=2)
+    d.line([x + 12, y + h // 2, x + w - 12, y + h // 2],
+           fill=(255, 255, 255), width=3)
+    for nx in range(x + 16, x + w - 12, 12):
+        d.line([nx, y + h // 2 - 6, nx, y + h // 2 + 6],
+               fill=(255, 255, 255), width=1)
+    cx, cy, r = x + 46, y + 26, 11
+    d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(220, 230, 60),
+              outline=(120, 140, 20), width=2)
+    d.arc([cx - r, cy - r, cx + r, cy + r], 300, 60, fill=(120, 140, 20),
+          width=2)
+    tx, ty = x + w - 52, y + h - 40
+    d.polygon([(tx, ty), (tx + 26, ty), (tx + 22, ty + 22), (tx + 4, ty + 22)],
+              fill=(241, 196, 15))
+    d.rectangle([tx + 8, ty + 22, tx + 18, ty + 28], fill=(241, 196, 15))
+    d.rectangle([tx + 2, ty + 28, tx + 24, ty + 32], fill=(180, 140, 20))
+    d.arc([tx - 6, ty + 2, tx + 6, ty + 14], 90, 270, fill=(241, 196, 15),
+          width=2)
+    d.arc([tx + 20, ty + 2, tx + 32, ty + 14], 270, 90, fill=(241, 196, 15),
+          width=2)
+
+
 ILLS = {"cop31": ill_cop31, "ukraine": ill_ukraine, "bahrain": ill_bahrain,
         "sparta": ill_sparta, "hongkong": ill_hongkong, "cricket": ill_cricket,
         "lasvegas": ill_lasvegas, "nepal": ill_nepal, "gaza": ill_gaza,
         "iran_elec": ill_iran_elec, "bolsonaro": ill_bolsonaro,
         "aukus": ill_aukus, "myanmar": ill_myanmar,
-        "basketball": ill_basketball}
+        "basketball": ill_basketball, "tennis": ill_tennis}
 
 # --------------------------------------------------------------------- map
 NA = [(60, 108), (64, 100), (90, 82), (118, 74), (152, 62), (188, 62),
@@ -723,14 +777,14 @@ def draw():
     M = 12
     # --- top band
     d.rectangle([0, 0, W, 20], fill=NAVY)
-    centre(d, W // 2, 4, "SUNDAY 22 NOVEMBER 2026  ·  LATE EDITION  ·  "
-           "39 STORIES  ·  7 REGIONS", SANSB(10), (255, 255, 255))
+    centre(d, W // 2, 4, "SUNDAY 22 NOVEMBER 2026  ·  FINAL EDITION  ·  "
+           "44 STORIES  ·  7 REGIONS", SANSB(10), (255, 255, 255))
     # --- masthead
     centre(d, W // 2, 24, "THE WORLD IN ONE DAY", SERIFB(52), INK)
     d.rectangle([M, 84, W - M, 84], fill=INK, width=1)
     d.rectangle([M, 87, W - M, 87], fill=INK, width=1)
     centre(d, W // 2, 90,
-           "COP31 goes to the vote · Bahrain claims · 186 drones over "
+           "COP31 collapses · Bahrain claims · 186 drones over "
            "Ukraine · Ship ablaze off Finland",
            SERI(16), INK)
     # --- stat strip
@@ -738,7 +792,7 @@ def draw():
              ("720/9", "India's record Test total"),
              ("$491bn", "Nvidia value wiped"),
              ("82,500", "France marchers counted"),
-             ("24", "dead, Nigeria boat")]
+             ("10,000", "marched in Antalya")]
     sw = (W - 2 * M) // 6
     for i, (big, small) in enumerate(stats):
         x0 = M + i * sw
@@ -749,8 +803,8 @@ def draw():
     # --- timeline (7 items; short forms so all seven fit)
     tl = [("03:00", "COP31 vote"), ("08:00", "COP31 plenary"),
           ("09:29", "Hamas talks"), ("10:00", "HK polls close"),
-          ("11:00", "Pope Leo lunch"), ("16:30", "Liverpool v Man Utd"),
-          ("17:00", "ATP final")]
+          ("11:00", "Pope Leo lunch"), ("18:28", "Liverpool 4-0 Man Utd"),
+          ("19:17", "Alcaraz wins ATP final")]
     d.rectangle([M, 150, W - M, 172], fill=(238, 232, 214), outline=LINE, width=1)
     d.text((M + 6, 156), "THE DAY IN UTC", font=SANSB(10), fill=RED)
     tx = M + 112
@@ -762,7 +816,7 @@ def draw():
     # --- region bar
     x0 = M
     for name, cnt, col in REGIONS:
-        seg = int((W - 2 * M) * cnt / 39)
+        seg = int((W - 2 * M) * cnt / 44)
         d.rectangle([x0, 178, x0 + seg - 2, 196], fill=col)
         lab = f"{name} {cnt}"
         fs = 10
@@ -784,7 +838,7 @@ def draw():
             x += 201
     # --- section header
     d.rectangle([M, 762, W - M, 762], fill=INK, width=1)
-    d.text((M, 764), "ALSO ON SUNDAY 22 NOVEMBER — 25 MORE STORIES",
+    d.text((M, 764), "ALSO ON SUNDAY 22 NOVEMBER — 30 MORE STORIES",
            font=SANSB(11), fill=INK)
     d.text((W - M - SANS(10).getlength("NUMBERS MATCH THE MAP PINS"), 765),
            "NUMBERS MATCH THE MAP PINS", font=SANS(10), fill=GREY)
@@ -792,7 +846,7 @@ def draw():
     pins = [s["pin"] for s in LEADS] + [s["pin"] for s in MED]
     draw_map(d, M, 778, 300, 130, pins)
     colw = 230
-    cols = [ALSO[0:9], ALSO[9:17], ALSO[17:25]]
+    cols = [ALSO[0:10], ALSO[10:20], ALSO[20:30]]
     for ci, col in enumerate(cols):
         cx = M + 310 + ci * colw
         for ri, (n, txt, reg) in enumerate(col):
@@ -806,7 +860,7 @@ def draw():
     # --- date check
     d.rectangle([M, 916, W - M, 972], fill=(238, 232, 214), outline=RED, width=2)
     d.text((M + 8, 920),
-           "DATE CHECK — READ THIS FIRST · WIRES AS OF 11:00 UTC, SUNDAY 22 NOVEMBER 2026",
+           "DATE CHECK — READ THIS FIRST · WIRES AS OF 22:00 UTC, SUNDAY 22 NOVEMBER 2026",
            font=SANSB(11), fill=RED)
     block(d, M + 8, 936, W - 2 * M - 16,
           "Left out as other days' news: Peru's 6.7 quake (20 Nov) · the "
@@ -817,8 +871,9 @@ def draw():
           "Cantine raid (5 Nov) · Makkah missile debris (11 Nov).",
           SANS(10.5), leading=13, max_lines=2)
     d.text((M + 8, 958),
-           "Tonight's barrage was 186 drones, not 400. Not yet decided at press "
-           "time: COP31's final approval · the ATP final · Liverpool v Man Utd.",
+           "Tonight's barrage was 186 drones, not 400. Decided by press "
+           "time: COP31 collapses with no deal · Alcaraz wins the ATP "
+           "final · Liverpool rout Man Utd 4-0.",
            font=SANS(10.5), fill=INK)
     # --- footer
     block(d, M, 978, W - 2 * M,

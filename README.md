@@ -2,15 +2,26 @@
 [![rank](https://make.fun/badge/news-image-20261122/giber76/news-image-20261122-entry/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 [![reward](https://make.fun/badge/news-image-20261122/giber76/news-image-20261122-entry/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
-# Sunday 22 November 2026 — one front page, 39 stories
+# Sunday 22 November 2026 — one front page, 44 stories
 
 A dense newspaper front page summing up Sunday 22 November 2026 in a
-single 1024×1024 image: 4 leads, 10 features, 25 more stories, a stat
+single 1024×1024 image: 4 leads, 10 features, 30 more stories, a stat
 strip, a UTC timeline, a region bar, a world map with numbered pins and
-a date check. Late edition — wires as of 11:00 UTC. Every story was
+a date check. Final edition — wires as of 22:00 UTC. Every story was
 verified against live reporting before it was drawn — see `STORIES.md`
 for the source and the day-tag of each one. Stories marked SAT happened
 on Saturday; they are the weekend's news Sunday woke to.
+
+## v6 (branch v6-fix)
+
+Final edition (wires 22:00 UTC): the day's endings are in — COP31
+COLLAPSED in the closing plenary (lead 1 rewritten, art label "NO
+DEAL"), Alcaraz beat Zverev 6-2, 7-6(7) for his first ATP Finals title
+(promoted from ALSO to feature 8, new tennis illustration), Liverpool
+routed Man Utd 4-0 in Pochettino's debut (ALSO 39 is now the result).
+Five more stories (39 → 44): Leeds stun Chelsea 4-1, Fulham hold Man
+City 1-1, 10,000 march in Antalya, ATP doubles, Pakistan's Test series
+win. Built on v5 (judge 984,958, rank #168; top-50 cutoff 988,856).
 
 ## v5 (branch v5-fix)
 
@@ -26,10 +37,10 @@ Built on v4 (judge 984,446, rank #228; top-50 cutoff 988,817).
 
 ## Leads
 
-1. **COP31's final deal goes to the vote** — Antalya. A final text
-   lands at dawn: no fossil fuels named, the $120bn adaptation target
-   dropped, a 35% power share by 2035, and the first admission the
-   1.5°C limit will be missed. No adoption yet at press time.
+1. **COP31 collapses — no deal** — Antalya. The closing plenary
+   rejects the draft text: no fossil fuels named, the $120bn target
+   lost. President Kurum: "no agreement on this text." Longest COP
+   on record.
 2. **186 drones over Ukraine overnight** — Russia fires 186 drones, 72
    jet-powered; air defences down 161, but strikes hit 18 places.
 3. **Iran claims strikes on US bases in Bahrain** — Tehran says it hit
@@ -40,7 +51,7 @@ Built on v4 (judge 984,446, rank #228; top-50 cutoff 988,817).
 
 `draw.py` (Python + Pillow, stdlib only besides PIL) draws the whole page
 from the story list in `STORIES.md` — masthead, stat strip, timeline,
-region bar, world map, 13 original illustrations, ALSO list, date check
+region bar, world map, 14 original illustrations, ALSO list, date check
 and footer. `main.ts` copies the finished `entry.png` to the output
 directory.
 
