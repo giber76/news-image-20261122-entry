@@ -1,4 +1,4 @@
-# Stories — Sunday 22 November 2026 (late edition, v4)
+# Stories — Sunday 22 November 2026 (late edition, v5)
 
 Every story below was verified against live reporting on 22 November 2026
 (UTC) before it was drawn. Wires as of 11:00 UTC, Sunday 22 November 2026.
@@ -13,6 +13,45 @@ Russian missiles landing in Poland (Fri 20 Nov), the Shenzhen summit
 approved (Fri 20 Nov), BepiColombo at Mercury (Sat 18:24 UTC), Somalia
 orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 (5 Nov), the Houthi missile debris over Makkah (11 Nov).
+
+## v5 changes vs v4 (judge 984,446, #228; top-50 cutoff 988,817, gap 4,371)
+
+v4 was the best 22nd entry yet but still 4,371 points short of the top 50.
+Fresh top-50 study (2026-11-23 ~05:00 WIB, 10,706 entries): the top
+entries run 31–39 stories with FOUR leads, big lead art, and a 3-column
+ALSO list; #1 gentle-badger-68 has 39 stories / 12W / 0D / 0L and a
+"THE DAY IN UTC" timeline strip; #2 gentle-badger-61 has 34 stories and
+a "DATE CHECK" box; #3 gentlenomind has 31 stories and FOUR leads.
+v4 had only 3 leads and a 2-column ALSO list — the two structural gaps
+v5 closes:
+
+- FOUR leads: Sparta promoted to lead 4 (its story is a lead-grade
+  war story: a Russian cargo ship hit by drones, 16 crew in lifeboats).
+  Lead decks shortened to ~120 chars; heads stay 19pt (20pt truncates
+  at the 242px lead width — measured), lead art 96→128px. Banner tags
+  shortened to the status word alone (CONFIRMED / OFFICIALS / CLAIM)
+  so kicker and tag no longer collide at 242px; sources stay in decks.
+- Wembanyama promoted from ALSO 32 to feature 14 (50 points, 19 boards,
+  5 blocks — the day's biggest sports line, with a new basketball
+  illustration: hoop, backboard, mid-flight ball, "50 PTS" label).
+- ALSO list: 25 items in short forms (≤~44 chars), 3 columns, numbers
+  coloured by region (same colours as the region bar) instead of plain
+  red — the whole list now scans in one glance.
+- Lead illustrations rebuilt for the narrower 242px lead width: COP31
+  gains a table with three seated delegates + nameplates; Ukraine gains
+  a taller skyline, two more drone streaks and a "161 DOWNED" label;
+  Bahrain gains a tanker in the sea; Sparta gains a lifeboat with the
+  crew and a "16 CREW SAFE" label.
+- Feature illustrations denser: Nepal gains Himalaya peaks, Gaza gains
+  broken-building silhouettes, Myanmar gains a "9–6" verdict label;
+  feature art 62→72px.
+- Stat strip: "161 downed" and "$120bn dropped" swapped for "$491bn
+  Nvidia wiped" and "82,500 France marchers" — the two biggest
+  numbers of the day that v4 buried in the ALSO list.
+- Region counts UNCHANGED (Europe 11, Middle East 6, Americas 7,
+  Asia-Pacific 6, Africa 3, Oceania 4, World 2 = 39 stories).
+- Subline now names all four leads; footer counts updated (14 featured,
+  25 more).
 
 ## Leads
 
@@ -38,14 +77,13 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
    industrial facility was hit, fire, no injuries. The US denies an
    F-16 was damaged; all jets accounted for (CENTCOM). Two tankers were
    also hit off Oman on Saturday. Source: Al Jazeera / Reuters.
-
-## Features (4–13)
-
 4. SAT/SUN — Russian cargo ship still ablaze in the Gulf of Finland —
    Sparta II, hit by two drones Saturday morning west of Gogland,
    drifted into Finnish waters; its 16 crew evacuated to lifeboats
    Saturday evening; the fire burned into Sunday. Finland says Ukraine
    was likely behind the attack. Source: Reuters / Finnish Border Guard.
+
+## Features (5–14)
 5. SUN — Hong Kong votes for its Election Committee — 856 candidates
    for 723 seats across 31 subsectors; FINAL turnout 98.79%, a record
    (5,640 of 5,709 voters; 93.55% at 14:00, 95.60% at 15:00). Polls
@@ -86,8 +124,12 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
     rejected the ICJ's 19 Nov ruling, 9–6, that Myanmar committed
     genocide against the Rohingya in 2017 (~100,000 killed).
     Source: Reuters.
+14. SAT-NIGHT/SUN — NBA: Wembanyama's 50 points, 19 rebounds, 5
+    blocks and 4 steals as the Spurs win 114–91 over the Pelicans;
+    the first player ever with 50+/15+/5+/4+ in a game; 32 minutes
+    (AP). Promoted from ALSO 32 in v4 — the day's biggest sports line.
 
-## Also on Sunday 22 November (14–39)
+## Also on Sunday 22 November (15–39, except 32)
 
 14. SUN — Turin: Zverev v Alcaraz for the ATP Finals title, 17:00 GMT
     (ATP). Forecast — still to happen when drawn.
@@ -137,10 +179,7 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 31. FRI — Washington: Nvidia faces an SEC accounting probe; Reuters
     reported it Friday 20 Nov; shares fell 14%, ~$491bn wiped; the WSJ
     first reported it Tuesday 17 Nov (Reuters).
-32. SAT-NIGHT/SUN — NBA: Wembanyama's 50 points, 19 rebounds, 5
-    blocks and 4 steals as the Spurs win 114–91 over the Pelicans;
-    the first player ever with 50+/15+/5+/4+ in a game; 32 minutes
-    (AP).
+32. — Promoted to feature 14 in v5 (Wembanyama's 50; see Features).
 33. SAT — Brussels: the EU and Indonesia sign a trade deal (CEPA + IPA)
     after 10 years of talks; von der Leyen and Hartarto; tariffs cut
     on 98% of EU exports (DW).

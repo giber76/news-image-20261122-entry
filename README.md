@@ -5,12 +5,20 @@
 # Sunday 22 November 2026 — one front page, 39 stories
 
 A dense newspaper front page summing up Sunday 22 November 2026 in a
-single 1024×1024 image: 3 leads, 10 features, 26 more stories, a stat
+single 1024×1024 image: 4 leads, 10 features, 25 more stories, a stat
 strip, a UTC timeline, a region bar, a world map with numbered pins and
 a date check. Late edition — wires as of 11:00 UTC. Every story was
 verified against live reporting before it was drawn — see `STORIES.md`
 for the source and the day-tag of each one. Stories marked SAT happened
 on Saturday; they are the weekend's news Sunday woke to.
+
+## v5 (branch v5-fix)
+
+Four leads (Sparta promoted to lead 4), Wembanyama promoted from the
+ALSO list to feature 14, the ALSO list in 3 short-form columns with
+region-coloured numbers, denser lead and feature illustrations, and a
+sharper stat strip ($491bn Nvidia wiped, 82,500 France marchers).
+Built on v4 (judge 984,446, rank #228; top-50 cutoff 988,817).
 
 ## The image
 
