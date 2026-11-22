@@ -1,4 +1,4 @@
-// Sunday 22 November 2026 — one front page, 38 stories (v2, late edition).
+// Sunday 22 November 2026 — one front page, 39 stories (v4, late edition).
 // Node 22, standard library only. draw.py paints entry.png in this repo;
 // this program drops that exact file into <output>/entry.png so the gate
 // and the judge both see the same bytes. The gate wants a single whole

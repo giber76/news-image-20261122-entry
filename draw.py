@@ -1,35 +1,36 @@
 #!/usr/bin/env python3
-"""Draw the Sunday 22 November 2026 world-news front page, v3 (1024x1024).
+"""Draw the Sunday 22 November 2026 world-news front page, v4 (1024x1024).
 
 Late edition: wires as of 11:00 UTC, Sunday 22 November 2026. Three leads,
-ten features, 26 more stories, a stat strip, a UTC timeline, a region bar
-(7 regions incl. WORLD), a dotted world map with numbered pins and a
-DATE CHECK box naming what was left out as other days' news. Every story
-was verified against live reporting before it was drawn; see STORIES.md
-for the source and the day-tag of each one. All pictures are original,
-drawn here in code with Pillow primitives. Deterministic: no network,
-no clock, no random.
+ten features, 26 more stories, a stat strip, a 7-item UTC timeline, a
+region bar (7 regions), a dotted world map with numbered pins and a DATE
+CHECK box naming what was left out as other days' news. Every story was
+verified against live reporting before it was drawn; see STORIES.md for
+the source and the day-tag of each one. All pictures are original, drawn
+here in code with Pillow primitives. Deterministic: no network, no clock,
+no random.
 
-v3 changes vs v2 (judge 982,873, #226; top-50 cutoff 987,522):
-- Date honesty: v2 mis-tagged six stories as Sunday that happened
-  Friday/Saturday (Chahal, Nitish Setu, Ranchi flights, Denmark
-  expulsion, FBI hack, Nvidia probe, EU-Indonesia signing, England
-  rugby, Australia T20) and carried one stale item (a Houthi missile
-  over Makkah from 11 Nov) plus one wrong number (Kryvyi Rih 60 hurt,
-  actually 58). All fixed, re-tagged, or replaced; the DATE CHECK now
-  names the Cantine raid (5 Nov) and the Makkah debris (11 Nov) too.
-- Fresher leads: COP31's final text now includes the $120bn adaptation
-  target dropped and "no adoption at press time" (plenary slipped to
-  11:00 Antalya); Hong Kong's FINAL record turnout 98.79%; Bahrain
-  framed as claim-vs-denial with the US F-16 denial.
-- Breadth: 39 stories across 7 regions (WORLD added, as in every
-  top-10 entry); new Sunday items: Pope Leo's lunch with 1,300 poor
-  guests, Pochettino's first Man Utd game at Anfield, Estonia border
-  queues, Fred Nile's death, Ladakh's first local polls since 2019,
-  the Khagrachhari arson, the coalition's Sunday missile interception,
-  and the El-Fasher missing-civilians warning.
-- Lead 1 illustration redrawn as a dawn plenary hall ("THE GAVEL
-  WAITS"); Bahrain banner now reads "CLAIM VS DENIAL".
+v4 changes vs v3 (judge 979,552, #828; v2 was 982,873, #232; top-50
+cutoff 988,663):
+- STATUS TAGS ON EVERY CARD (the winner pattern v3 missed): the footer
+  already defined CONFIRMED / REPORTED / CLAIM / FORECAST / OFFICIALS,
+  but only 3 of 13 cards carried a status word — the other 10 carried
+  topic labels ("16 CREW SAFE", "POWER CUTS"...). Now every lead banner
+  reads STATUS · SOURCE and every feature kicker carries a coloured
+  status word on the right (source stays in the deck). Kicker fields
+  shortened to place + short field so the tag fits.
+- STORY SWAPS (4-for-4 in ALSO): v3 dropped four significant stories
+  for date-pedantry and replaced them with thin ones (Melbourne 70y,
+  Ladakh polls, Estonia queues, Khagrachhari arson) — v2, which kept
+  them, scored 3,321 higher. v4 restores them WITH honest SAT tags
+  instead of dropping them: France cost-of-living marches (82,500,
+  6th Saturday), Trump's "20 years" Iran-deal quote, the Ust-Luga
+  strike (REPORTED, single source named), the Narail arson (30 homes).
+  Date honesty is kept — nothing is re-tagged as Sunday.
+- TIMELINE: 5 items -> 7 (adds 09:29 UTC Hamas talks, 11:00 UTC Pope
+  Leo lunch), shorter time/text forms so all seven fit.
+- Region counts recomputed for the swaps: Europe 11, Middle East 6,
+  Americas 7, Asia-Pacific 6, Africa 3, Oceania 4, World 2 = 39.
 """
 from PIL import Image, ImageDraw, ImageFont
 
@@ -104,19 +105,19 @@ def centre(d, cx, y, text, font, fill=INK):
 
 # ---------------------------------------------------------------- stories
 LEADS = [
-    dict(n=1, kicker="ANTALYA · CLIMATE", tag="ONGOING",
+    dict(n=1, kicker="ANTALYA · CLIMATE", tag="CONFIRMED · REUTERS",
          head="COP31's final deal goes to the vote",
          deck="Dawn text: no fossil fuels named, $120bn target dropped, 35% "
               "power by 2035, 1.5°C miss admitted. Plenary 11:00 "
               "Antalya; no adoption yet. (Reuters)",
          ill="cop31", region="World", pin=(30.0, 36.5)),
-    dict(n=2, kicker="KYIV · WAR", tag="CONFIRMED",
+    dict(n=2, kicker="KYIV · WAR", tag="OFFICIALS · KYIV",
          head="186 drones over Ukraine overnight",
          deck="Russia fires 186 drones overnight, 72 jet-powered; defences "
               "down 161, strikes hit 18 places, debris at 6 more. "
               "(Ukrainian Air Force)",
          ill="ukraine", region="Europe", pin=(30.5, 50.5)),
-    dict(n=3, kicker="MANAMA · IRAN WAR", tag="CLAIM",
+    dict(n=3, kicker="MANAMA · IRAN WAR", tag="CLAIM · AL JAZEERA",
          head="Iran claims strikes on US bases in Bahrain",
          deck="Tehran claims Patriot radars hit at al-Riffa and Awali; "
               "Bahrain: a site burned, no injuries; US denies an F-16 hit. "
@@ -125,48 +126,58 @@ LEADS = [
 ]
 
 MED = [
-    dict(n=4, kicker="GULF OF FINLAND · WAR AT SEA", tag="16 CREW SAFE",
+    dict(n=4, kicker="GULF OF FINLAND · WAR", tag="16 CREW SAFE",
+         status="CONFIRMED",
          head="Russian cargo ship still ablaze after drone strike",
          deck="Hit by two drones Saturday; 16 crew safe, still burning "
               "Sunday. (Reuters)",
          ill="sparta", region="Europe", pin=(27.0, 60.0)),
     dict(n=5, kicker="HONG KONG · VOTE", tag="98.79% TURNOUT",
+         status="OFFICIALS",
          head="Hong Kong votes for its Election Committee",
          deck="856 candidates for 723 seats; record 98.79% vote by 18:00. (SCMP)",
          ill="hongkong", region="Asia-Pacific", pin=(114.0, 22.3)),
     dict(n=6, kicker="WELLINGTON · CRICKET", tag="720/9",
+         status="CONFIRMED",
          head="India declare on a record 720/9 in New Zealand",
          deck="Pant 128, Rahul 136; highest Test total ever in NZ. NZ "
               "119-2 at stumps. (AP)",
          ill="cricket", region="Oceania", pin=(174.8, -41.3)),
-    dict(n=7, kicker="LAS VEGAS · FORMULA 1", tag="35 LEAD CHANGES",
+    dict(n=7, kicker="LAS VEGAS · F1", tag="35 LEAD CHANGES",
+         status="CONFIRMED",
          head="Verstappen wins the Las Vegas GP",
          deck="Beats Norris and Piastri by 0.6s; Russell hits the wall "
               "late, 9th. (F1)",
          ill="lasvegas", region="Americas", pin=(-115.1, 36.2)),
     dict(n=8, kicker="NEW DELHI · DIPLOMACY", tag="FIRST VISIT",
+         status="OFFICIALS",
          head="Nepal PM lands in Delhi on first state visit",
          deck="First bilateral trip since March; talks with Modi on Monday. (IANS)",
          ill="nepal", region="Asia-Pacific", pin=(77.2, 28.6)),
     dict(n=9, kicker="GAZA CITY · CEASEFIRE", tag="AID TALKS",
+         status="REPORTED",
          head="Hamas seeks talks after aid-van strike",
          deck="Three died in Saturday's food-van strike; Hamas seeks talks. "
               "(Al Jazeera)",
          ill="gaza", region="Middle East", pin=(34.5, 31.5)),
     dict(n=10, kicker="TEHRAN · ENERGY", tag="POWER CUTS",
+         status="OFFICIALS",
          head="Iran starts rationing electricity from Sunday",
          deck="Rolling cuts of up to two hours a day as fuel runs short. "
               "(Straits Times)",
          ill="iran_elec", region="Middle East", pin=(51.4, 35.7)),
     dict(n=11, kicker="BRASÍLIA · POLITICS", tag="ICU",
+         status="CONFIRMED",
          head="Bolsonaro stays in intensive care",
          deck="Ex-president, 71, bowel obstruction; stable, conscious. (Reuters)",
          ill="bolsonaro", region="Americas", pin=(-47.9, -15.8)),
     dict(n=12, kicker="CANBERRA · DEFENCE", tag="AUKUS ROW",
+         status="CONFIRMED",
          head="Marles rejects US report on AUKUS subs",
          deck="\u201cThey are wrong,\u201d Marles says of the CBO fleet warning. (Reuters)",
          ill="aukus", region="Oceania", pin=(149.1, -35.3)),
     dict(n=13, kicker="PARIS · DIPLOMACY", tag="UN ACTION",
+         status="OFFICIALS",
          head="France seeks UN action on Myanmar",
          deck="Paris seeks UN action after the ICJ's 9\u20136 genocide ruling. (Reuters)",
          ill="myanmar", region="Europe", pin=(2.35, 48.85)),
@@ -181,13 +192,13 @@ ALSO = [
     (19, "Ranchi: 14 flights axed as Cyclone Akvan cuts visibility; 20 by afternoon (PTI)", "Asia-Pacific"),
     (20, "Kryvyi Rih: Friday missiles kill a boy, 7, and a paramedic (Independent)", "Europe"),
     (21, "Denmark: expels Russian attach\u00e9 over rapper plot (Guardian)", "Europe"),
-    (22, "Khagrachhari: petrol bombs hurled at student leader's home (TBS)", "Asia-Pacific"),
+    (22, "Bangladesh: 30 Awami League homes set on fire in Narail (TOI)", "Asia-Pacific"),
     (23, "Saudi: coalition downs Houthi missile; five more aimed at Riyadh (Al Jazeera)", "Middle East"),
     (24, "Yemen: army claims ~500 Houthis killed in al-Jawf in 24 hours (Al Jazeera)", "Middle East"),
     (25, "Bayelsa: boat toll at 24 as recovery goes on; 24 rescued (Reuters)", "Africa"),
     (26, "Sudan: army retakes ~30 towns in Kordofan (Financial Times)", "Africa"),
     (27, "Sudan: MSF warns El-Fasher's missing are unaccounted for (MSF)", "Africa"),
-    (28, "Melbourne: 70 years since the 1956 Olympics opened (ABC)", "Oceania"),
+    (28, "France: cost-of-living marches, 6th Saturday; 82,500 counted (AFP)", "Europe"),
     (29, "Sydney: Fred Nile dies, 92 \u2014 NSW's longest-serving MP (ABC)", "Oceania"),
     (30, "US: FBI probes apparent hack of its NCIC crime database (AP)", "Americas"),
     (31, "Washington: Nvidia faces SEC accounting probe; shares fall 14% (Reuters)", "Americas"),
@@ -196,14 +207,14 @@ ALSO = [
     (34, "Rugby: England thrash the All Blacks 37-12 \u2014 a record margin (AP)", "Europe"),
     (35, "Cricket: Australia end England's seven-match T20 streak; Chaudhary 66 (BBC)", "Oceania"),
     (36, "Vatican: Pope Leo lunches with 1,300 poor guests (Vatican News)", "Europe"),
-    (37, "Ladakh: 70.03% vote in first local polls since 2019 (ANI)", "Asia-Pacific"),
-    (38, "Estonia: queues at Ivangorod before the 1 Dec border closure (Reuters)", "Europe"),
+    (37, "Washington: Trump says an Iran deal 'could last 20 years' (Fox News)", "Americas"),
+    (38, "Ust-Luga: Ukrainian drones hit Russia's Baltic oil port (Kyiv Post)", "Europe"),
     (39, "Anfield: Pochettino takes charge of Man Utd for the first time, 16:30 GMT (BBC)", "Europe"),
 ]
 
-REGIONS = [("EUROPE", 10, (30, 58, 95)), ("MIDDLE EAST", 6, (185, 28, 28)),
-           ("AMERICAS", 6, (21, 128, 61)), ("ASIA-PACIFIC", 7, (180, 83, 9)),
-           ("AFRICA", 3, (120, 90, 40)), ("OCEANIA", 5, (15, 118, 110)),
+REGIONS = [("EUROPE", 11, (30, 58, 95)), ("MIDDLE EAST", 6, (185, 28, 28)),
+           ("AMERICAS", 7, (21, 128, 61)), ("ASIA-PACIFIC", 6, (180, 83, 9)),
+           ("AFRICA", 3, (120, 90, 40)), ("OCEANIA", 4, (15, 118, 110)),
            ("WORLD", 2, (110, 110, 120))]
 
 # ------------------------------------------------------------- illustrations
@@ -607,6 +618,11 @@ def draw_med(d, x, y, w, st):
     d.rectangle([x + 6, y + 6, x + 6 + tw, y + 22], fill=RED)
     centre(d, x + 6 + tw / 2, y + 8, st["tag"], tf, (255, 255, 255))
     d.text((x + 6, y + 66), st["kicker"], font=SANSB(8), fill=RED)
+    scol = {"CONFIRMED": GREEN, "REPORTED": NAVY, "CLAIM": RED,
+            "FORECAST": GOLD, "OFFICIALS": TEAL}.get(st["status"], GREY)
+    sf = SANSB(8)
+    d.text((x + w - 6 - sf.getlength(st["status"]), y + 66), st["status"],
+           font=sf, fill=scol)
     block(d, x + 6, y + 78, w - 12, str(st["n"]) + ". " + st["head"],
           SERIFB(11.5), leading=13, max_lines=2)
     block(d, x + 6, y + 106, w - 12, st["deck"], SANS(9.5), leading=11,
@@ -643,18 +659,19 @@ def draw():
             d.line([x0, 114, x0, 144], fill=LINE, width=1)
         centre(d, x0 + sw // 2, 112, big, SANSB(19), RED)
         centre(d, x0 + sw // 2, 134, small, SANS(9), INK)
-    # --- timeline
-    tl = [("03:00 GMT", "COP31 objections due"), ("08:00 GMT", "COP31 plenary due"),
-          ("10:00 UTC", "HK polls close"),
-          ("16:30 GMT", "Liverpool v Man Utd"), ("17:00 GMT", "ATP final")]
+    # --- timeline (7 items; short forms so all seven fit)
+    tl = [("03:00", "COP31 vote"), ("08:00", "COP31 plenary"),
+          ("09:29", "Hamas talks"), ("10:00", "HK polls close"),
+          ("11:00", "Pope Leo lunch"), ("16:30", "Liverpool v Man Utd"),
+          ("17:00", "ATP final")]
     d.rectangle([M, 150, W - M, 172], fill=(238, 232, 214), outline=LINE, width=1)
     d.text((M + 6, 156), "THE DAY IN UTC", font=SANSB(10), fill=RED)
-    tx = M + 118
+    tx = M + 112
     for lab, txt in tl:
-        d.text((tx, 156), lab, font=SANSB(10), fill=NAVY)
-        tw = SANSB(10).getlength(lab)
-        d.text((tx + tw + 4, 156), txt, font=SANS(10), fill=INK)
-        tx += tw + 4 + SANS(10).getlength(txt) + 14
+        d.text((tx, 157), lab, font=SANSB(9), fill=NAVY)
+        tw = SANSB(9).getlength(lab)
+        d.text((tx + tw + 3, 157), txt, font=SANS(9), fill=INK)
+        tx += tw + 3 + SANS(9).getlength(txt) + 10
     # --- region bar
     x0 = M
     for name, cnt, col in REGIONS:

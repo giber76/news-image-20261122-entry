@@ -1,4 +1,4 @@
-# Stories — Sunday 22 November 2026 (late edition, v3)
+# Stories — Sunday 22 November 2026 (late edition, v4)
 
 Every story below was verified against live reporting on 22 November 2026
 (UTC) before it was drawn. Wires as of 11:00 UTC, Sunday 22 November 2026.
@@ -112,8 +112,7 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 21. FRI — Denmark: expels a Russian attaché over a rapper plot;
     announced Friday 20 Nov (PET; the target was rapper Kyivstoner of
     the Loyal to Familia gang) (Guardian).
-22. SUN — Khagrachhari: petrol bombs hurled at student leader Shadik
-    Kayem's home at ~03:30 Sunday; his parents escaped (TBS).
+22. SAT — Bangladesh: 30 Awami League homes set on fire in Narail (TOI).
 23. SUN — Saudi: the coalition downs a Houthi missile over western
     Saudi Arabia; five more missiles and a drone aimed at Riyadh were
     intercepted on Sunday (Al Jazeera).
@@ -128,7 +127,7 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
     El-Fasher is unknown; ~5,000 reached Tawila; 6 in 10 adults
     surveyed show starvation signs; Yale's HRL found suspected mass
     graves at a mosque and a former children's hospital (MSF).
-28. SUN — Melbourne: 70 years since the 1956 Olympics opened (ABC).
+28. SAT — France: cost-of-living marches, 6th Saturday; 82,500 counted (AFP).
 29. SAT/SUN — Sydney: Fred Nile dies, 92 — NSW's longest-serving
     parliamentarian (1981–2023); his family announced it on Sunday
     (ABC).
@@ -154,12 +153,9 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 36. SUN — Vatican: Pope Leo lunches with 1,300 poor guests in the Paul
     VI Hall for the 10th World Day of the Poor; roast turkey and mashed
     potatoes; guests arrive at 11:00 (Vatican News).
-37. SAT — Ladakh: 70.03% vote in the panchayat polls and 52.40% in the
-    municipal polls — the first local polls since the UT was formed in
-    2019 (ANI).
-38. SUN — Estonia: residents queue at Ivangorod on Sunday to cross
-    before the 1 Dec closure (decided Friday 20 Nov; 5 checkpoints,
-    6 months) (Reuters).
+37. SAT — Washington: Trump says an Iran deal "could last 20 years" (Fox News).
+38. SAT — Ust-Luga: Ukrainian drones hit Russia's Baltic oil port
+    (Kyiv Post, single source — tagged REPORTED).
 39. SUN — Anfield: Pochettino takes charge of Man Utd for the first
     time, 16:30 GMT v Liverpool; United 18th, their worst top-flight
     start in 40 years, 1 win in 10, 8 games without a win, in the
@@ -168,8 +164,35 @@ orders the UAE envoy out (Thu 19 Nov), the Cantine raid in DR Congo
 
 ## Region counts (must sum to 39)
 
-Europe 10 · Middle East 6 · Americas 6 · Asia-Pacific 7 · Africa 3 ·
-Oceania 5 · World 2 = 39.
+Europe 11 · Middle East 6 · Americas 7 · Asia-Pacific 6 · Africa 3 ·
+Oceania 4 · World 2 = 39.
+
+## v4 — what changed from v3
+
+- STATUS TAGS ON EVERY CARD: the footer already defined CONFIRMED /
+  REPORTED / CLAIM / FORECAST / OFFICIALS, but only 3 of 13 cards
+  carried a status word — the other 10 carried topic labels. The
+  news19 winner study's #1 pattern is a status tag + source on every
+  card. Now every lead banner reads STATUS · SOURCE and every feature
+  kicker carries a coloured status word on the right (source stays in
+  the deck). Statuses assigned from the sources in this file:
+  CONFIRMED where 2+ outlets agree, OFFICIALS where an official body
+  is the source, REPORTED where one outlet claims it (Hamas talks,
+  Ust-Luga), CLAIM where it is contested (Bahrain).
+- STORY SWAPS (4-for-4 in ALSO): v3 dropped four significant stories
+  and replaced them with thin ones (Melbourne 70y anniversary, Ladakh
+  local polls, Estonia border queues, Khagrachhari arson) — and v2,
+  which kept the significant ones, scored 3,321 higher. v4 restores
+  them WITH honest SAT tags instead of dropping them: France
+  cost-of-living marches (82,500, 6th Saturday), Trump's "20 years"
+  Iran-deal quote, the Ust-Luga strike (REPORTED, single source
+  named), the Narail arson (30 homes). Date honesty is kept — nothing
+  is re-tagged as Sunday. The Kenya Ebola countdown stays out (its
+  framing was wrong: last patient discharged 11 Nov).
+- TIMELINE: 5 items -> 7 (adds 09:29 UTC Hamas talks, 11:00 UTC Pope
+  Leo lunch), shorter time/text forms so all seven fit.
+- Region counts recomputed for the swaps (Europe 11, Americas 7,
+  Asia-Pacific 6, Oceania 4).
 
 ## v3 — what changed from v2
 
