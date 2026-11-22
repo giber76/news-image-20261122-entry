@@ -277,31 +277,29 @@ def ill_bahrain(d, x, y, w, h):
     _flames(d, x + 98, y + h - 74, 52, 14, n=3)
     _smoke(d, x + 240, y + h - 60)
     # missile arcs
-    d.arc([x + 60, y - 30, x + 260, y + 50], 200, 340, fill=(241, 196, 15), width=3)
-    d.arc([x + 120, y - 40, x + 300, y + 30], 200, 340, fill=(255, 255, 255), width=2)
+    d.arc([x + 60, y + 4, x + 260, y + 56], 200, 340, fill=(241, 196, 15), width=3)
+    d.arc([x + 120, y + 2, x + 300, y + 52], 200, 340, fill=(255, 255, 255), width=2)
     d.rectangle([x + w - 92, y + 8, x + w - 10, y + 24], fill=RED)
     centre(d, x + w - 51, y + 10, "2 BASES", SANSB(10), (255, 255, 255))
 
 
 def ill_sparta(d, x, y, w, h):
     d.rectangle([x, y, x + w, y + h], fill=SKYNIGHT)
-    for sx, sy in [(x + 30, y + 14), (x + 120, y + 10), (x + 220, y + 18),
-                   (x + 280, y + 12)]:
-        d.ellipse([sx, sy, sx + 4, sy + 4], fill=(255, 255, 255))
-    d.rectangle([x, y + h - 34, x + w, y + h], fill=(28, 68, 110))
-    for wx in range(0, w, 34):
-        d.arc([x + wx, y + h - 26, x + wx + 30, y + h - 8], 200, 340,
+    for sx, sy in [(x + 30, y + 8), (x + 120, y + 6), (x + 180, y + 10)]:
+        d.ellipse([sx, sy, sx + 3, sy + 3], fill=(255, 255, 255))
+    d.rectangle([x, y + h - 12, x + w, y + h], fill=(28, 68, 110))
+    for wx in range(0, w, 30):
+        d.arc([x + wx, y + h - 10, x + wx + 26, y + h - 2], 200, 340,
               fill=(180, 210, 230), width=2)
-    hx, hy = x + 40, y + h - 62
-    d.polygon([(hx, hy + 22), (hx + 20, hy), (hx + w - 90, hy),
-               (hx + w - 70, hy + 22)], fill=(139, 35, 35))
-    d.rectangle([hx + 30, hy - 22, hx + 70, hy], fill=(70, 90, 110))
-    d.rectangle([hx + 80, hy - 22, hx + 120, hy], fill=(180, 160, 90))
-    d.rectangle([hx + 130, hy - 22, hx + 170, hy], fill=(70, 90, 110))
-    d.rectangle([hx + 200, hy - 30, hx + 226, hy], fill=(220, 220, 220))
-    _flames(d, hx + 24, hy - 32, 190, 32, n=6)
-    _smoke(d, hx + 60, hy - 28)
-
+    hx, hy = x + 30, y + h - 26
+    d.polygon([(hx, hy + 12), (hx + 14, hy), (hx + w - 70, hy),
+               (hx + w - 56, hy + 12)], fill=(139, 35, 35))
+    d.rectangle([hx + 22, hy - 10, hx + 56, hy], fill=(70, 90, 110))
+    d.rectangle([hx + 62, hy - 10, hx + 96, hy], fill=(180, 160, 90))
+    d.rectangle([hx + 102, hy - 10, hx + 136, hy], fill=(70, 90, 110))
+    d.rectangle([hx + 142, hy - 16, hx + 160, hy], fill=(220, 220, 220))
+    _flames(d, hx + 18, hy - 20, 130, 10, n=5)
+    _smoke(d, hx + 50, hy - 18, r=5)
 
 def ill_nepal(d, x, y, w, h):
     d.rectangle([x, y, x + w, y + h], fill=SKY)
@@ -318,9 +316,9 @@ def ill_nepal(d, x, y, w, h):
     d.rectangle([x, y + h - 30, x + w, y + h], fill=(120, 180, 120))
     for fx, cols in [(x + 26, [(255, 153, 51), (255, 255, 255), (19, 136, 8)]),
                      (x + w - 62, [(220, 20, 60), (0, 56, 147), (220, 20, 60)])]:
-        d.line([fx, y + h - 30, fx, y + h - 62], fill=INK, width=2)
+        d.line([fx, y + h - 30, fx, y + 4], fill=INK, width=2)
         for i, c in enumerate(cols):
-            d.rectangle([fx, y + h - 62 + i * 9, fx + 30, y + h - 53 + i * 9],
+            d.rectangle([fx, y + 4 + i * 8, fx + 26, y + 11 + i * 8],
                         fill=c)
 
 
@@ -368,11 +366,11 @@ def ill_hongkong(d, x, y, w, h):
             for wx in range(bx + 4, bx + bw - 4, 8):
                 d.rectangle([wx, wy, wx + 3, wy + 4], fill=(241, 196, 15))
     # ballot box + ballot
-    bx, by = x + w // 2 - 26, y + h - 52
-    d.rectangle([bx, by, bx + 52, by + 34], fill=(185, 28, 28))
+    bx, by = x + w // 2 - 26, y + h - 44
+    d.rectangle([bx, by, bx + 52, by + 32], fill=(185, 28, 28))
     d.rectangle([bx + 8, by - 6, bx + 44, by], fill=(140, 20, 20))
-    d.polygon([(bx + 14, by - 22), (bx + 30, by - 26), (bx + 40, by - 12),
-               (bx + 26, by - 6)], fill=(252, 248, 238), outline=INK)
+    d.polygon([(bx + 20, by - 4), (bx + 30, by - 8), (bx + 36, by),
+               (bx + 28, by + 2)], fill=(252, 248, 238), outline=INK)
 
 
 def ill_cricket(d, x, y, w, h):
@@ -397,11 +395,11 @@ def ill_lasvegas(d, x, y, w, h):
         d.ellipse([sx, sy, sx + 3, sy + 3], fill=(255, 255, 255))
     # strip skyline with lit windows
     base = y + h - 24
-    for bx, bw, bh, c in [(x + 8, 30, 26, (200, 60, 120)),
-                          (x + 44, 22, 38, (60, 140, 200)),
-                          (x + 72, 26, 30, (220, 160, 40)),
-                          (x + 150, 24, 40, (200, 60, 120)),
-                          (x + 178, 20, 28, (60, 140, 200))]:
+    for bx, bw, bh, c in [(x + 8, 30, 24, (200, 60, 120)),
+                          (x + 44, 22, 28, (60, 140, 200)),
+                          (x + 72, 26, 26, (220, 160, 40)),
+                          (x + 150, 24, 28, (200, 60, 120)),
+                          (x + 178, 20, 24, (60, 140, 200))]:
         d.rectangle([bx, base - bh, bx + bw, base], fill=c)
         for wy in range(base - bh + 4, base - 3, 8):
             for wx in range(bx + 3, bx + bw - 3, 7):
@@ -492,8 +490,8 @@ def ill_aukus(d, x, y, w, h):
     for wx in range(sx + 16, sx + 124, 18):
         d.ellipse([wx, sy + 11, wx + 7, sy + 18], fill=(241, 196, 15))
     # bubbles
-    for bx, by, br in [(sx + 30, sy - 26, 3), (sx + 60, sy - 34, 4),
-                       (sx + 100, sy - 28, 3)]:
+    for bx, by, br in [(sx + 24, sy - 10, 3), (sx + 120, sy - 14, 4),
+                       (sx + 100, sy - 8, 3)]:
         d.ellipse([bx - br, by - br, bx + br, by + br], outline=(200, 220, 235),
                   width=1)
 
