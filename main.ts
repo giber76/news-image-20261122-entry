@@ -1,4 +1,4 @@
-// Sunday 22 November 2026 — one front page, 36 stories.
+// Sunday 22 November 2026 — one front page, 38 stories.
 // Node 22, standard library only. The entry is the entry.png drawn by
 // draw.py in this repo; this program places that exact file at
 // <output>/entry.png so the gate and the judge see the same bytes.
